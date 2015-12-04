@@ -9,7 +9,8 @@ Name of Quantlet: SFEItoIntegral
 
 Published in: Statistics of Financial Markets I
 
-Description: Generates and plots the path of a Wiener process and the corresponding Ito Integral for a given specification of c and delta_t.
+Description: 'Generates and plots the path of a Wiener process and the corresponding Ito Integral
+for a given specification of c and delta_t.'
 
 Keywords: Black Scholes, Wiener process, Ito integration, stochastic integration, times series, stochastic process
 

@@ -11,7 +11,8 @@ Published in: Statistics of Financial Markets I
 
 Description: Generates and plots the path of a general Ito process. 
 
-Keywords: Black Scholes, Ito process, Wiener process, Cox-Ingersoll-Ross process, geometric Brownian Motion, times series, stochastic process 
+Keywords: 'Black Scholes, Ito process, Wiener process, Cox-Ingersoll-Ross process, geometric Brownian Motion,
+times series, stochastic process'
 
 See also: SFEWienerProcess, SFEItoIntegral
 
