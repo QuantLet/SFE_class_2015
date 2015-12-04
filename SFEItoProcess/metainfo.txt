@@ -1,0 +1,21 @@
+
+Name of Quantlet: SFEItoProcess
+
+Published in: Statistics of Financial Markets I
+
+Description: Generates and plots the path of a general Ito process. 
+
+Keywords: Black Scholes, Ito process, Wiener process, Cox-Ingersoll-Ross process, geometric Brownian Motion, times series, stochastic process 
+
+See also: SFEWienerProcess, SFEItoIntegral
+
+Author: Michael Lebacher, Johannes Stoiber
+
+Submitted:  2015/12/03
+
+Input :
+- dt : delta t
+- c : constant c
+- start_val : starting value for the process
+ 
+Output:  A plot of the simulated Ito process.
