@@ -1,0 +1,23 @@
+Name of QuantLet:	VolSurfPlot
+
+Description:  		'VolSurfPlot produces a graphic visualisation of the
+              		implied volatility surface. The implied volatility
+			smiles are shown as blue scatter plot.'
+
+Keywords:     		Black Scholes, implied volatility, volatility
+
+See also:     		'SFEVolaTermStructure, SFEVolaCov, SFEVolaPCA, SFEPCA, 
+              		SFEVolSurfMovie'
+
+Author:       		Maria Grith
+
+Adjustments:		Sabine Bertram, Steffen Thesdorf
+
+Datafile:		surf_1412.csv
+
+Input:        		'Price of the option, skrike price, risk-free interest rate, 
+              		time to maturity, price of the underlying and Put-Call-flag'
+
+Output:       		Plot of implied volatility surface
+
+
