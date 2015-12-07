@@ -4,28 +4,24 @@
 ## [<img src="https://github.com/QuantLet/Styleguide-and-Validation-procedure/blob/master/pictures/qloqo.png" alt="Visit QuantNet">](http://quantlet.de/) **SFEVolSurfFilm** [<img src="https://github.com/QuantLet/Styleguide-and-Validation-procedure/blob/master/pictures/QN2.png" width="60" alt="Visit QuantNet 2.0">](http://quantlet.de/d3/ia)
 
 ```yaml
+Name of QuantLet: SFEVolSurfFilm
 
-Name of QuantLet:	SFEVolSurfFilm
+Description: 'Produces a graphic visualisation of the implied volatility surface. It saves the
+images as figures and produces a film out of them. The implied volatility smiles are shown as blue
+scatter plot.'
 
-Description:  		'Produces a graphic visualisation of the
-              		implied volatility surface. It saves the images as figures 
-              		and produces a film out of them. The implied volatility 
-					smiles are shown as blue scatter plot.'
+Keywords: Black Scholes, implied volatility, volatility
 
-Keywords:     		Black Scholes, implied volatility, volatility
+See also: SFEVolaTermStructure, SFEVolaCov, SFEVolaPCA, SFEPCA, SFEVolSurfPlot
 
-See also:     		SFEVolaTermStructure, SFEVolaCov, SFEVolaPCA, SFEPCA, SFEVolSurfPlot
+Author: Sabine Bertram, Steffen Thesdorf
 
-Author:       		Sabine Bertram, Steffen Thesdorf
+Datafile: surf_2010-2014.csv
 
-Datafile:			surf_2010-2014.csv
+Input: 'Price of the option, strike price, risk-free interest rate, time to maturity, price of the
+underlying, Put-Call-flag and index for different trading dates'
 
-Input:        		'Price of the option, strike price, risk-free interest rate, 
-              		time to maturity, price of the underlying, Put-Call-flag
-              		and index for different trading dates'
-
-Output:       		Film of implied volatility surface
-
+Output: Film of implied volatility surface
 ```
 
 

@@ -1,5 +1,5 @@
 
-Name of QuantLet:	VolSurfPlot
+Name of QuantLet:	SFEVolSurfPlot
 
 Description:  		'Produces a graphic visualisation of the
 					implied volatility surface. The implied volatility
