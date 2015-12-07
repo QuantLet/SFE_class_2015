@@ -25,7 +25,7 @@ Output: Film of implied volatility surface
 ```
 
 
-![Video1](VolSurfFilm.avi)
+![Play Output-Video](VolSurfFilm.avi)
 
 
 ```matlab
