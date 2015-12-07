@@ -1,7 +1,7 @@
 
 Name of QuantLet:	VolSurfPlot
 
-Description:  		'VolSurfPlot produces a graphic visualisation of the
+Description:  		'Produces a graphic visualisation of the
 					implied volatility surface. The implied volatility
 					smiles are shown as blue scatter plot.'
 
