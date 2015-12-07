@@ -28,7 +28,7 @@ Output: Plot of implied volatility surface
 ![Picture1](VolSurfPlot.jpg)
 
 
-```m
+```matlab
 %%
 %--------------------------------------------------------------------------
 % Data Preparation
