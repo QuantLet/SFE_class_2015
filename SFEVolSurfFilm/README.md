@@ -6,6 +6,8 @@
 ```yaml
 Name of QuantLet: SFEVolSurfFilm
 
+Published in: Statistics of Financial Markets I
+
 Description: 'Produces a graphic visualisation of the implied volatility surface. It saves the
 images as figures and produces a film out of them. The implied volatility smiles are shown as blue
 scatter plot.'

@@ -6,6 +6,8 @@
 ```yaml
 Name of QuantLet: SFEVolSurfPlot
 
+Published in: Statistics of Financial Markets I
+
 Description: 'Produces a graphic visualisation of the implied volatility surface. The implied
 volatility smiles are shown as blue scatter plot.'
 
