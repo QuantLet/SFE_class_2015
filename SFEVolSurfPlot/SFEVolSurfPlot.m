@@ -145,5 +145,3 @@ hold off
 
 % save figure
 saveas(gcf, sprintf('VolSurfPlot.jpg'))
-
-
