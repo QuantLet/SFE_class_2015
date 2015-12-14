@@ -84,23 +84,21 @@ while (j<gmat+1);
         % implied volatility
         Y=x(:,8);
 
-        % optimal bandwidth rule of thumb for quartic kernel
+        % optimal bandwidth by Silverman's rule of thumb
         a=unique(x(:,7));
-        b=length(a);
-        h1=2.78*std(a)*b^(-1/6);
+        h1=0.9*min(std(a),iqr(a)/1.34)*length(a)^(-1/5);
 
-        c=unique(x(:,4));
-        d=length(c);
-        h2=2.78*std(c)*d^(-1/6);
+        b=unique(x(:,4));
+        h2=0.9*min(std(b),iqr(b)/1.34)*length(b)^(-1/5);
 
-        % kernel matrix - quartic kernel
+        % kernel matrix - gaussian kernel
         W=zeros(v,v);
         i=1;
         while (i<v+1);
             u1=(x(i,7)-MON(j,k))/h1;
             u2=(x(i,4)-MAT(j,k))/h2;
-            aa=15/16*(1-u1^2)^2*(abs(u1) <= 1)/h1;
-            bb=15/16*(1-u2^2)^2*(abs(u2) <= 1)/h2;
+            aa=sqrt(1/2*pi)*exp(-0.5*u1^2);
+            bb=sqrt(1/2*pi)*exp(-0.5*u2^2);
             W(i,i)=aa*bb;
             i=i+1;
         end
