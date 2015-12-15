@@ -1,4 +1,3 @@
-
 Name of Quantlet: SFE_RND_HD
 
 Published in: 	  Statistics of Financial Markets I
