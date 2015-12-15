@@ -46,11 +46,11 @@ lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 # ---------------------------------------------------------------------------#
 
 # Read data
-odata = read.table("odata.txt", header = T, sep = "\t", dec = ".")  # option data
-idata = read.csv("DAX30.csv", header = T, sep = ",")  # index data
-idata$Date = as.Date(idata$Date, format = "%Y-%m-%d")
-dax = data.frame(idata$Date, idata$Adj.Close)
-names(dax) = c("Date", "DAX")
+odata       = read.table("odata.txt", header = T, sep = "\t", dec = ".")  # option data
+idata       = read.csv("DAX30.csv", header = T, sep = ",")  # index data
+idata$Date  = as.Date(idata$Date, format = "%Y-%m-%d")
+dax         = data.frame(idata$Date, idata$Adj.Close)
+names(dax)  = c("Date", "DAX")
 
 # Select data for the chosen time to maturity
 odax = subset(odata, odata$maturity < 0.75)
@@ -68,10 +68,10 @@ odax = subset(odata, odata$maturity < 0.75)
 # be applied to European options (due to the assumptions).
 
 spdbl = function(m, sigma, sigma1, sigma2, s, r, tau) {
-  rm = length(m)
-  st = sqrt(tau)
+  rm  = length(m)
+  st  = sqrt(tau)
   ert = exp(r * tau)
-  rt = r * tau
+  rt  = r * tau
   
   # Modified Black-Scholes scaled by S-div instead of F
   d1 = (log(m) + tau * (r + 0.5 * (sigma^2)))/(sigma * st)
@@ -105,9 +105,9 @@ spdbl = function(m, sigma, sigma1, sigma2, s, r, tau) {
     (m^3))) + (1/(ert * (m^2)) * dnorm(d2, mean = 0, sd = 1) * d21)
   
   # Recover strike price
-  x = s/m
-  c1 = -(m^2) * f1
-  c2 = s * ((1/x^2) * ((m^2) * f2 + 2 * m * f1))
+  x   = s/m
+  c1  = -(m^2) * f1
+  c2  = s * ((1/x^2) * ((m^2) * f2 + 2 * m * f1))
   
   # Calculate the quantities of interest
   cdf   = ert * c1 + 1
@@ -149,7 +149,7 @@ SPDrookley = function(RawData, tau_day) {
     }
   }
   
-  # Automatic bandwidth selection (see Härdle et al. 2004)
+  # Automatic bandwidth selection (see HÃ¤rdle et al. 2004)
   locband    = length(Data[, 1])^(-1/9)
   
   Scorrected = as.matrix(Data[, 1] * exp(-Data[, 3] * Data[, 4]))
