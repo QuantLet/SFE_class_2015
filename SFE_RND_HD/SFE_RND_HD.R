@@ -1,34 +1,3 @@
-# -------------------------------------------------------------------------------
-# Name of Quantlet: SFE_RND_HD
-# -------------------------------------------------------------------------------
-# Published in:     Statistics of Financial Markets I
-# -------------------------------------------------------------------------------
-# Description:      SFE_RND_HD estimates the risk neutral and historical
-#                   Density for option data (traded on the 22nd of December 2014) 
-#                   and historical index of the DAX.  The RND is estimated by the
-#                   Rookley method and the historical density (HD) by kernel 
-#                   density estimation. The results are plots corresponding to 
-#                   the expiration date of the options where the RND and HD.          
-# -------------------------------------------------------------------------------
-# Keywords:         kernel, Black Scholes, Breeden and Litzenberger,
-#                   nonparametric, option price, density, State-Price Density, 
-#                   Rookley, historical density
-# -------------------------------------------------------------------------------
-# See also:         XFGSPDcb, XFGSPDcb2, COPdensitydaxreturn
-# -------------------------------------------------------------------------------
-# Author:           Sophie Stadlinger, Karolina Stanczak
-# -------------------------------------------------------------------------------
-# Submitted:        2015/12/11
-# -------------------------------------------------------------------------------
-# Datafile:         odata.txt, DAX30.csv
-# --------------------------------------------------------------------------------
-# Input:            Historical time series of the DAX Index price, option price,
-#                   strike price, risk free interest rate, time to maturity, 
-#                   DAX Index price.
-# --------------------------------------------------------------------------------
-# Output:           Densities for different times to maturity and the
-#                   corrsponding plots.
-# -------------------------------------------------------------------------------
 
 # clear all variables
 rm(list = ls(all = TRUE))
