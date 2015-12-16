@@ -1,4 +1,4 @@
 
 ## Build software better, together
 
-<img src="RapidPrototyping.png" width="800" />
+<img src="RapidPrototyping.png" width="900" />
