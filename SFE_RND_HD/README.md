@@ -31,6 +31,11 @@ Output: 'Densities for different times to maturity and the corrsponding plots.'
 ```
 
 
+![Picture1](Figures/SFE_RND_HD_HD.png)
+![Picture2](Figures/SFE_RND_HD_HD3D.png)
+![Picture3](Figures/SFE_RND_HD_RND3D.png)
+
+
 ```r
 
 # clear all variables
