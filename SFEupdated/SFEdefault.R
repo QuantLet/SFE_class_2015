@@ -1,31 +1,3 @@
-# ------------------------------------------------------------------------------
-# Book:        SFE - Statistics of Financial Markets
-# ------------------------------------------------------------------------------
-# Quantlet:    SFEdefault
-# ------------------------------------------------------------------------------
-# Description: Calculates the historical mean and volatility of default rate 
-#              bonds belong to different ratings and also the corresponding 
-#              regression by exponential function fitting. Estimates the asset 
-#              correlation using one-factor model.
-# ------------------------------------------------------------------------------
-# Usage:       Estimate asset correlation using default data and some function 
-#              fitting
-# ------------------------------------------------------------------------------
-# Inputs:      SFEMoodydefault.csv
-# ------------------------------------------------------------------------------
-# Output:      Historical mean of default rate, default rate volatility, the 
-#              corresponding regression by exponential function fitting and the 
-#              estimated one-factor model asset correlation.
-# ------------------------------------------------------------------------------
-# Keywords:    default rate, regression, volatility, asset correlation
-# ------------------------------------------------------------------------------
-# See also:    BaseCorrGaussModelCDO, CompCorrGaussModelCDO, ETL, SFEETLGaussTr1,
-#              SFEbaseCorr, SFEcompCorr, SFEcompCorr, SFEdefaproba, SFEmyfun, 
-#              lowerTrLossGauss, 
-# ------------------------------------------------------------------------------
-# Author:      Ya Qian, 2015/12/21
-# ------------------------------------------------------------------------------
-
 #Close windows and clear variables                                                                   
 graphics.off()
 rm(list = ls(all=TRUE))  
@@ -66,10 +38,12 @@ z1                 = cbind(C1,log(sds[-1]))
 
 #plot default probability and default volatility
 par(mfrow = c(1,2))
-plot(C, y, main = "Mean Default Rate", xlab = "Rating",  ylab = "Default Probability", type = "l", col = "blue3", lwd = 3, cex.axis = 1.5, cex.lab = 1.5, lty = 2)
+plot(C, y, main = "Mean Default Rate", xlab = "Rating",  ylab = "Default Probability", 
+    type = "l", col = "blue3", lwd = 3, cex.axis = 1.5, cex.lab = 1.5, lty = 2)
 lines(z, col = "red3", lty = 1, lwd = 3)
 
-plot(C, y1, main = "Default Rate Volatility", xlab = "Rating",  ylab = "Default Volatility", type = "l", col = "blue3", lwd = 3, cex.axis = 1.5, cex.lab = 1.5, lty = 2)
+plot(C, y1, main = "Default Rate Volatility", xlab = "Rating",  ylab = "Default Volatility", 
+    type = "l", col = "blue3", lwd = 3, cex.axis = 1.5, cex.lab = 1.5, lty = 2)
 lines(z1, col = "red3", lty = 1, lwd = 3)
 
 #Estimate asset correlations of rating classes
