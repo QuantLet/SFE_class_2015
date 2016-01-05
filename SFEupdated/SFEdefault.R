@@ -33,8 +33,7 @@ rm(list = ls(all=TRUE))
 # install and load packages
 libraries = c("mnormt","stats")
 lapply(libraries, function(x) if (!(x %in% installed.packages())) {
-  install.packages(x)
-})
+    install.packages(x)})
 lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 
 #Read dataset                                                                                                       
@@ -80,14 +79,11 @@ f = function(rho, defpro, defvol){
 }
 
 # Find asset correlations   
-      rho = c(0,0,0,0,0,0)
+rho = c(0,0,0,0,0,0)
 for (i in 1:6)
-   rho[i] = uniroot(f, interval = c(0,1), lower=0, upper=1, tol = .Machine$double.eps^0.25,
-                   defpro = est.means[i]/100, defvol = est.sds[i]/100)
+rho[i] = uniroot(f, interval = c(0,1), lower=0, upper=1, tol = .Machine$double.eps^0.25,
+    defpro = est.means[i]/100, defvol = est.sds[i]/100)
 
-
-
-#Rating   = c("Aaa", "Aa", "A", "Baa", "Ba", "B", "Mean")
 #Rename variables and print the result table
 Mean      = means
 Stand.dev = sds
