@@ -75,7 +75,7 @@ lines(z1, col = "red3", lty = 1, lwd = 3)
 #Estimate asset correlations of rating classes
 
 f = function(rho, defpro, defvol){
-        f = defvol^2-pmnorm(c(qnorm(defpro),qnorm(defpro)), mean = rep(0, 2), matrix(data = c(1,rho,rho,1),nrow = 2))+defpro^2
+    f = defvol^2-pmnorm(c(qnorm(defpro),qnorm(defpro)), mean = rep(0, 2), matrix(data = c(1,rho,rho,1),nrow = 2))+defpro^2
 }
 
 # Find asset correlations   
