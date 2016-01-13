@@ -28,8 +28,11 @@
 #------------------------------------------------------------------------
 # Author:       Weongi Woo, Thorsten Disser, 2015/12/20
 #------------------------------------------------------------------------
-
 #########################################################################
+# clear variables and close windows
+rm(list = ls(all = TRUE))
+graphics.off()
+
 #Parameter Setting
 S0 	  = 100               # stock price at t = 0
 r 	  = 0.03              # risk free interest rate
