@@ -22,4 +22,4 @@ Input:
 
 Output: A plot of the underlying and a plot of the price of a cliquet call option with one pay-off at the final maturity.
 
-Example: Plots are generated for the following parameter values: S0 = 100, r = 0.3, D = 0.01, sigma = 0.5, reset = c(0.3, 0.7)
+Example: 'Plots are generated for the following parameter values: S0 = 100, r = 0.3, D = 0.01, sigma = 0.5, reset = c(0.3, 0.7)'
