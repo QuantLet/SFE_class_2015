@@ -23,4 +23,4 @@ Input:
 
 Output: A plot of simulated underlying with the payoff of the desired option type considered at the desired resets.
 
-Example: Plots are generated for the following parameter values: S0 = 100, r = 0.3, D = 0.01, sigma = 0.5, reset = c(0.3, 0.6, 0.9), typ = "call"
+Example: 'Plots are generated for the following parameter values: S0 = 100, r = 0.3, D = 0.01, sigma = 0.5, reset = c(0.3, 0.6, 0.9), typ = "call"'
