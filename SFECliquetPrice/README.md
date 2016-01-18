@@ -1,0 +1,44 @@
+
+[<img src="https://github.com/QuantLet/Styleguide-and-Validation-procedure/blob/master/pictures/banner.png" alt="Visit QuantNet">](http://quantlet.de/index.php?p=info)
+
+## [<img src="https://github.com/QuantLet/Styleguide-and-Validation-procedure/blob/master/pictures/qloqo.png" alt="Visit QuantNet">](http://quantlet.de/) **SFECliquetPrice** [<img src="https://github.com/QuantLet/Styleguide-and-Validation-procedure/blob/master/pictures/QN2.png" width="60" alt="Visit QuantNet 2.0">](http://quantlet.de/d3/ia)
+
+```yaml
+
+Name of Quantlet : SFECliquetPrice
+
+Published in : Statistics of Financial Markets I
+
+Description : 'Calculates and plots BS price of a cliquet call option as a function of S, r, D,
+sigma and points of reset. The cliquet option is priced as sum of aligned start forward options
+with strike price equal to the underlying at the reset points.'
+
+Keywords : black-scholes, plot, option, exotic-option, option-price
+
+See also : SFECliquetPayoff
+
+Author : Weongi Woo, Thorsten Disser
+
+Submitted : 2015/12/20
+
+Input: 
+- S0: Stock price at t = 0
+- r: Risk free interest rate
+- D: Continuous dividend payment
+- sigma: Volatility
+- reset: reset points
+
+Output : 'A plot of the underlying and a plot of the price of a cliquet call option with one
+pay-off at the final maturity.'
+
+Example : 'Plots are generated for the following parameter values: S0 = 100, r = 0.3, D = 0.01,
+sigma = 0.5, reset = c(0.3, 0.7)'
+
+```
+
+![Picture1](CliquetPrice.PNG)
+
+
+```r
+
+```
