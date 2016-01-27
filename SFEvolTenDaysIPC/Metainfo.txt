@@ -1,0 +1,14 @@
+Name of QuantLet : SFEIPC10
+
+Published in : SFMLLN
+
+Description : 'Realized volatility analysis of mexican stock market IPC using harModel 
+predective function and som time series analysis' 
+
+Keywords : 'Volatility, graphical representation, time-series, log returns, variance'
+
+Author : Luis Alejandro Sarmiento Abogado
+
+Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
+
+Datafile : IPC (5 MIN) 26_11-10_12

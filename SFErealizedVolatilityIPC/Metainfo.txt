@@ -1,0 +1,14 @@
+Name of QuantLet : SFERV5
+
+Published in : SFE
+
+Description : 'Realized variance analysis and graphical representation of 5 seconds intraday highfrequency realized variance
+from the Mexica stock market IPC and comparison with it's lagged subsample' 
+
+Keywords : 'Volatility, graphical representation, time-series, log returns, variance'
+
+Author : Luis Alejandro Sarmiento Abogado
+
+Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
+
+Datafile : IPC RV Data
