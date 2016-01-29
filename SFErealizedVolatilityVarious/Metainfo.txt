@@ -1,4 +1,4 @@
-Name of QuantLet : SFERV  
+Name of QuantLet : SFErealizedVolatilityVarious  
 
 Published in : SFE
 
