@@ -3,7 +3,7 @@ Name of QuantLet : SFERV4
 Published in : SFE
 
 Description : 'Realized variance analysis and graphical representation of 5 seconds intraday highfrequency realized variance
-from the German stock market DAX and comparison with it's lagged subsample' 
+from the German stock market DAX and comparison with it''s lagged subsample' 
 
 Keywords : 'Volatility, graphical representation, time-series, log returns, variance'
 
