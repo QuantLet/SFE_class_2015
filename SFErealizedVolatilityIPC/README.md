@@ -10,7 +10,7 @@ Name of QuantLet : SFErealizedVolatilityIPC
 Published in : SFE
 
 Description : 'Realized variance analysis and graphical representation of 5 seconds intraday
-highfrequency realized variance from the Mexica stock market IPC and comparison with it's lagged
+highfrequency realized variance from the Mexica stock market IPC and comparison with it''s lagged
 subsample'
 
 Keywords : Volatility, graphical representation, time-series, log returns, variance
