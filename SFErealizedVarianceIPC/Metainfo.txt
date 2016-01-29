@@ -1,4 +1,4 @@
-Name of QuantLet : SFERV3  
+Name of QuantLet : SFErealizedVarianceIPC  
 
 Published in : SFE
 
