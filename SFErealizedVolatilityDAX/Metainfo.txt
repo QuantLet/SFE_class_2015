@@ -1,4 +1,4 @@
-Name of QuantLet : SFERV4 
+Name of QuantLet : SFErealizedVolatilityDAX 
 
 Published in : SFE
 
