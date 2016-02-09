@@ -22,12 +22,12 @@ Author : Chinghsi Lee, Sai Niranjan Mohanamurali
 Submitted : 2015/12/30
 
 Input: 
-- S0: Stock''''s Initial Price
+- S0: Stock''s Initial Price
 - r: Interest Rate per year
 - vol: Volatility per year
 - b: Barrier
 - c: 'Type of Barrier Option (1: Down and Out, 2: Up and Out, 3: Down and In, 4: Up and In)'
-- 'User inputs the SFEBarrier parameters [Stock's Initial Price, Interest Rate, Volatility,
+- 'User inputs the SFEBarrier parameters [Stock''s Initial Price, Interest Rate, Volatility,
 Barrier, Type of Barrier option] like [200, 0.05, 0.03, 100, 1]'
 
 Output : Plot of a Barrier Option, depending on the type chosen
