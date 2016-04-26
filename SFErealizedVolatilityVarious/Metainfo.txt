@@ -1,6 +1,6 @@
 Name of QuantLet : SFErealizedVolatilityVarious  
 
-Published in : SFE
+Published in : Statistics of Financial Markets I
 
 Description : 'Realized volatility analysis using harModel of Dow Jones, CAC 50, FTSE 100 and Euro-USD exchange market' 
 

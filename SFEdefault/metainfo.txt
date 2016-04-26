@@ -1,7 +1,7 @@
 
 Name of Quantlet: SFEdefault
 
-Published in: Statistics of Financial Markets 
+Published in: Statistics of Financial Markets I
 
 Description: 'Calculates the historical mean and volatility of default rate 
               bonds belong to different ratings and also the corresponding 

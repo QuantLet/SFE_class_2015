@@ -1,6 +1,6 @@
 Name of QuantLet : SFEvolTenDaysIPC
 
-Published in : SFE
+Published in : Statistics of Financial Markets I
 
 Description : 'Realized volatility analysis of mexican stock market IPC using harModel 
 predective function and som time series analysis' 
