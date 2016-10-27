@@ -23,7 +23,7 @@ Input:
 - i: Interest Rate
 - sig: Volatility
 - t: Time to Expiration
-- FALSE: Number of Intervals
+- n: Number of Intervals
 
 Output : 'A plot of the American put option boundary condition with different volatility and time
 to maturity.'
