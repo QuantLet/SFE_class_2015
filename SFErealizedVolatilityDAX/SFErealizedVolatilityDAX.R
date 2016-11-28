@@ -43,7 +43,10 @@ daxrvs = daxrvs[complete.cases(daxrvs)]
 # Apply har model
 daxm = harModel(data = daxrv, periods = c(1, 5, 22), RVest = c("rCov"), 
                 type = "HARRV", h = 1, transform = NULL)
-
+#!!!
+n=length(daxrv)
+a= daxrv[(n-length(daxm$fitted.values)+1):n]
+b = cbind(a,daxm$fitted.values)
 # Plot observed and forecasted volatility
 pdf(file = "DAX1.pdf")
 
@@ -51,17 +54,36 @@ par(mfrow = c(2, 1))
 
 plot(daxm)
 
+plot(as.ts(daxrv),col="red",alpha=0.5)
+lines(as.ts(daxm$fitted.values),col="blue")
+
 # Plot realized variance
-cycles.dates = list(c("2000-01-03", "2002-01-03"), c("2008-09-01", "2010-09-01"), 
+
+cycles.dates = list(c("2000-02-03", "2002-01-03"), c("2008-09-01", "2010-09-01"), 
                     c("2015-06-05", "2015-12-15"))
 risk.dates = c("2000-01-04", "2008-09-01", "2015-06-03")
 risk.labels = c("Dot-com bubble", "Global Crisis", "Commodities volatility")
 
-chart.TimeSeries(daxrv, type = "l", main = "dax volatility", ylab = "Return", 
-                 col = "black", period.areas = cycles.dates, period.color = "lightgoldenrod3", 
-                 event.lines = risk.dates, event.labels = risk.labels, event.color = "red", 
-                 lwd = 1)
-
+chart.TimeSeries(
+  b[,c(2,1)],
+  auto.grid = F, 
+  type = "l", 
+  main = "dax volatility", 
+  ylab = "Return",
+  date.format = "%Y",
+  col = c("blue","red"), 
+  period.areas = cycles.dates,
+  period.color = "gray", 
+#   event.lines = risk.dates, 
+#   event.labels = risk.labels, 
+#   event.color = "red", 
+  lwd = 1,
+  element.color ="black",
+  major.ticks = FALSE,
+  minor.ticks = FALSE,
+  grid.color = "red",
+#   ylim=range(b)
+)
 
 dev.off()
 
