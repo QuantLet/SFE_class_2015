@@ -1,15 +1,17 @@
 
-Name of Quantlet: SFEBoundary
+Name of Quantlet: SFEBoundary_V
 
 Published in: Statistics of Financial Markets I
 
-Description: Boundary conditions of American put option. 
+Description: ‘Computes the optimal exercise boundary problem 
+             of American put option using a binomial tree under  
+             different volatilities.’ 
 
 Keywords: Black Scholes, Binomial tree, boundary condition, geometric Brownian Motion
 
 Authors: Yaojun Liu, Yinan Wu
 
-Submitted:  2016/01/08
+Submitted:  2015/12/28
 
 Input :
 -s0 : Stock Price
@@ -19,5 +21,4 @@ Input :
 -t : Time to Expiration
 -n : Number of Intervals
  
-Output: 'A plot of the American put option boundary condition with different 
-volatility and time to maturity.'
+Output: binomial trees and boundary figure

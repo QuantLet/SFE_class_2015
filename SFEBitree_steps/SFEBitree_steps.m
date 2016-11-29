@@ -1,9 +1,9 @@
 % ---------------------------------------------------------------------
-% Quantlet:     SFEPutConsistency
+% Quantlet:     SFEBitree_steps
 % ---------------------------------------------------------------------
-% Description:  SFEPutConsistency computes the exercise price of
+% Description:  Computes the exercise price of
 %               American put option using a binomial tree for assets
-%               without dividends.In order to see whether the pricing is
+%               without dividends. In order to see whether the pricing is
 %               reliable or not.
 % ---------------------------------------------------------------------
 % Inputs:       s0 - Stock Price

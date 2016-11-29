@@ -1,0 +1,25 @@
+
+Name of Quantlet:  SFEBitree_steps
+
+Published in: Statistics of Financial Markets I
+
+Description: ‘Computes the exercise price of American put option using a binomial tree for     
+             assets without dividends. In order to see whether the pricing is reliable or     
+             not.’ 
+
+Keywords: Black Scholes, Binomial tree, boundary condition, geometric Brownian Motion
+
+Authors: Yaojun Liu, Yinan Wu
+
+Submitted:  2015/12/28
+
+Input :
+-s0 : Stock Price
+-k : Exercise Price
+-i : Interest Rate
+-sig : Volatility
+-t : Time to Expiration
+-n : Number of Intervals
+ 
+Output:  ‘Option's price with different steps under the same time 
+         to maturity.’
