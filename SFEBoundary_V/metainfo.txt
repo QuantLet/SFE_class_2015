@@ -3,9 +3,9 @@ Name of Quantlet: SFEBoundary_V
 
 Published in: Statistics of Financial Markets I
 
-Description: ‘Computes the optimal exercise boundary problem 
+Description: 'Computes the optimal exercise boundary problem 
              of American put option using a binomial tree under  
-             different volatilities.’ 
+             different volatilities.' 
 
 Keywords: Black Scholes, Binomial tree, boundary condition, geometric Brownian Motion
 

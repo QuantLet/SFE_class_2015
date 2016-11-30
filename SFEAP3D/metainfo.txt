@@ -4,11 +4,15 @@ Published in:
 
 Description: Computes American option prices and the optimal exercise boundary. 
 
-Keywords: ‘exercise boundary, American options, partial differential inequality, finite difference discretisation’
+Keywords: 
+- exercise boundary
+- American options
+- partial differential inequality
+- finite difference discretisation
 
 Author: 
 
-Submitted:  2016/01/08 by Yaojun Liu and Yinan Wu
+Submitted: 2016/01/08 by Yaojun Liu and Yinan Wu
 
 Input :
 -K : Strike price
@@ -16,7 +20,7 @@ Input :
 -i : Annualized, continuously compounded risk-free rate
 -delta : Annualized, continuously compounded yield of the underlying asset
 -sigma : Volatility
--type : ‘call’ or ‘put’
+-type : call or put
 -m : Number of discrete stock values
 -n : Number of discrete time values
  
