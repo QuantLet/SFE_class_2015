@@ -10,8 +10,8 @@ library(highfrequency)
 library(PerformanceAnalytics)
 
 # Download File
-dax = read.csv(file = "Dax Data current.csv", sep = ",", head = TRUE, na.strings = c("", 
-                                                                                     "NA"))
+dax = read.csv(file = "../SFErealizedVolatilityDAX/Dax Data current.csv", sep = ",", head = TRUE, 
+               na.strings = c("","NA"))
 
 # Download data and transform it to a data frame
 dax = as.data.frame(dax)
@@ -43,56 +43,61 @@ daxrvs = daxrvs[complete.cases(daxrvs)]
 # Apply har model
 daxm = harModel(data = daxrv, periods = c(1, 5, 22), RVest = c("rCov"), 
                 type = "HARRV", h = 1, transform = NULL)
-#!!!
-n=length(daxrv)
-a= daxrv[(n-length(daxm$fitted.values)+1):n]
-b = cbind(a,daxm$fitted.values)
+# combining data
+dat = cbind(daxm$fitted.values,daxrv)
+dat = na.omit(dat)
 # Plot observed and forecasted volatility
-pdf(file = "DAX1.pdf")
-
-par(mfrow = c(2, 1))
-
-plot(daxm)
-
-plot(as.ts(daxrv),col="red",alpha=0.5)
-lines(as.ts(daxm$fitted.values),col="blue")
-
-# Plot realized variance
-
-cycles.dates = list(c("2000-02-03", "2002-01-03"), c("2008-09-01", "2010-09-01"), 
-                    c("2015-06-05", "2015-12-15"))
-risk.dates = c("2000-01-04", "2008-09-01", "2015-06-03")
-risk.labels = c("Dot-com bubble", "Global Crisis", "Commodities volatility")
-
-chart.TimeSeries(
-  b[,c(2,1)],
-  auto.grid = F, 
-  type = "l", 
-  main = "dax volatility", 
-  ylab = "Return",
-  date.format = "%Y",
-  col = c("blue","red"), 
-  period.areas = cycles.dates,
-  period.color = "gray", 
-#   event.lines = risk.dates, 
-#   event.labels = risk.labels, 
-#   event.color = "red", 
-  lwd = 1,
-  element.color ="black",
-  major.ticks = FALSE,
-  minor.ticks = FALSE,
-  grid.color = "red",
-#   ylim=range(b)
-)
+pdf(file = "DAX1.pdf",width = 8, height = 4)
+  par(mar = c(2,4,1,1))
+  cycles.dates = list(c("2000-02-03", "2002-01-03"), 
+                      c("2008-09-01", "2010-09-01"), 
+                      c("2015-06-05", "2015-12-15"))
+#   risk.labels = c("Dot-com bubble", "Global Crisis", "Commodities volatility")
+  chart.TimeSeries(
+    dat,
+    type = "l", 
+    main = NA, #"Observed and forecasted RV based on HAR Model: HARRV", 
+    ylab = "Realized Volatility",
+    col = c("red","blue"), 
+    auto.grid = F,
+    period.areas = cycles.dates,
+    period.color = "gray", 
+    lwd = 1.5,
+    date.format = "%Y",
+    xaxis = F,
+    element.color ="black",
+    minor.ticks = FALSE
+  )
+  # function chart.TimeSeries plots last Ticks label wrong
+  # problem was fixed by drawing axis with function axis()
+  axTicks = c(1,which(diff(as.numeric(format(time(dat),"%Y")))!=0),dim(dat)[1])
+  axis(1,axTicks,2000:2016,cex.axis=0.8)
 
 dev.off()
 
 # plot returns
-pdf(file = "DAX2.pdf")
-
-chart.TimeSeries(returns, type = "l", main = "DAX returns", ylab = "Return", 
-                 period.areas = cycles.dates, period.color = " lightcoral", event.lines = risk.dates, 
-                 event.labels = risk.labels, event.color = "blue", lwd = 1)
+pdf(file = "DAX2.pdf",width = 8, height = 4)
+  par(mar=c(3,4,3,1))
+  cycles.dates = list(c("2000-01-03", "2002-01-03"), 
+                      c("2008-09-01", "2010-09-01"), 
+                      c("2015-06-05", "2015-12-15"))
+  chart.TimeSeries(
+    returns, 
+    type = "l", 
+    col = "blue",
+    main = NA,#"DAX returns", 
+    ylab = "Returns",
+    auto.grid = F,
+    period.areas = cycles.dates, 
+    period.color = " gray", 
+    lwd = 1,
+#     date.format = "%Y",
+    xaxis = F,
+    element.color ="black",
+    minor.ticks = FALSE
+  )
+  axTicks = c(1,which(diff(as.numeric(format(time(returns),"%Y")))!=0),length(returns))
+  axis(1,axTicks,2000:2016,cex.axis=0.8)
 
 dev.off()
 
@@ -105,34 +110,50 @@ daxrvs8 = daxrvs["2008"]
 # apply har model
 daxm8 = harModel(data = daxrv8, periods = c(1, 5, 22), RVest = c("rCov"), 
                  type = "HARRV", h = 1, transform = NULL)
+# combining data
+dat = cbind(daxrvs8,daxm8$fitted.values)
+dat = na.omit(dat)
 
 # Plot harModel 2008
-pdf(file = "DAX3.pdf")
-
-plot(daxm8, cwd = 0.5, bg = "pch")
+pdf(file = "DAX3.pdf", width = 8, height = 4)
+  par(mar = c(2,4,1,1))
+  chart.TimeSeries(
+    dat,
+    auto.grid = F,
+    date.format = "%b",
+    col = c("blue","red"),
+    lwd = 2,
+    type = "l", 
+    main = NA,#"5 minutes realized volatility",
+    element.color = "black",
+    ylab = "RV",
+    major.ticks=F,
+    xaxis=F
+  )
+  axTicks = c(1,which(diff(as.numeric(format(time(dat),"%m")))!=0)+1)
+  axis(1,c(axTicks,dim(dat)[1]),c(format(time(dat)[c(axTicks)],format="%b"),"Jan"),cex.axis=0.8)
 
 dev.off()
 
 # Plot realized variance and a volatility approx.
-pdf(file = "DAX4.pdf")
+pdf(file = "DAX4.pdf", width = 8, height = 4)
 
-par(mfrow = c(3, 1))
-
-chart.TimeSeries(daxrv8, col = "red", type = "h", main = "5 minutes realized volatility", 
-                 ylab = "RV", xlab = "Time")
-
-# Plot realized volatility with subsampling
-chart.TimeSeries(daxrvs8, col = "blue", type = "h", main = " 5 minutes realized volatility with subsampling", 
-                 ylab = "RV", xlab = "Time")
-
-# set difference between volatilities with and wothout subsampling.
-diff = daxrv8 - daxrvs8
-
-# Plot the volatility differences
-chart.TimeSeries(diff, col = "purple", type = "h", main = " Difference in lagged and normal volatility", 
-                 ylab = "RV", xlab = "Time")
+  par(mar = c(2,4,1,1))
+  
+  chart.TimeSeries(
+    cbind(daxrvs8,daxrv8), 
+    auto.grid = F,
+    date.format = "%b",
+    col = c("red","blue"),
+    lwd = 2,
+    type = "l", 
+    main = NA,#"5 minutes realized volatility",
+    element.color = "black",
+    ylab = "RV",
+    major.ticks=F,
+    xaxis=F
+  )
+  axTicks = c(1,which(diff(as.numeric(format(time(daxrv8),"%m")))!=0)+1)
+  axis(1,c(axTicks,length(daxrv8)),format(time(daxrv8)[c(axTicks,1)],format="%b"),cex.axis=0.8)
 
 dev.off()
-
-
-
