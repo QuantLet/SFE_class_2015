@@ -7,7 +7,7 @@ Description: Boundary conditions of American put option.
 
 Keywords: Black Scholes, Binomial tree, boundary condition, geometric Brownian Motion
 
-Authors: Yaojun Liu, Yinan Wu
+Author: Yaojun Liu, Yinan Wu
 
 Submitted:  2016/01/08
 

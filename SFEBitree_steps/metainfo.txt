@@ -9,7 +9,7 @@ Description: 'Computes the exercise price of American put option using a binomia
 
 Keywords: Black Scholes, Binomial tree, boundary condition, geometric Brownian Motion
 
-Authors: Yaojun Liu, Yinan Wu
+Author: Yaojun Liu, Yinan Wu
 
 Submitted: 2015/12/28
 

@@ -1,6 +1,6 @@
 Name of Quantlet: SFEAP3D
 
-Published in: 
+Published in: MathWorks
 
 Description: Computes American option prices and the optimal exercise boundary. 
 
@@ -10,7 +10,7 @@ Keywords:
 - partial differential inequality
 - finite difference discretisation
 
-Author: 
+Author: Bram van den Broek
 
 Submitted: 2016/01/08 by Yaojun Liu and Yinan Wu
 
