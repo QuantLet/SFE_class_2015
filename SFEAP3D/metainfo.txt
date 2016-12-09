@@ -1,3 +1,4 @@
+
 Name of Quantlet: SFEAP3D
 
 Published in: MathWorks
@@ -15,13 +16,13 @@ Author: Bram van den Broek
 Submitted: 2016/01/08 by Yaojun Liu and Yinan Wu
 
 Input :
--K : Strike price
--T : Time to expiration of the option, expressed in years
--i : Annualized, continuously compounded risk-free rate
--delta : Annualized, continuously compounded yield of the underlying asset
--sigma : Volatility
--type : call or put
--m : Number of discrete stock values
--n : Number of discrete time values
+- K : Strike price
+- T : Time to expiration of the option, expressed in years
+- i : Annualized, continuously compounded risk-free rate
+- delta : Annualized, continuously compounded yield of the underlying asset
+- sigma : Volatility
+- type : call or put
+- m : Number of discrete stock values
+- n : Number of discrete time values
  
 Output: 3-D plot of option values versus stock prices and time
