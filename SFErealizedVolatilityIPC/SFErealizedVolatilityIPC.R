@@ -5,6 +5,11 @@
 graphics.off()
 rm(list = ls())
 
+# changing local coordinates, s.t. abbreviations of months are in English
+Sys.setlocale("LC_ALL","English")
+# resolution of png images
+resolution = 300
+
 # Load packages
 library(highfrequency)
 library(PerformanceAnalytics)
@@ -46,7 +51,8 @@ ipcm = harModel(data = ipcrv, periods = c(1, 5, 22), RVest = c("rCov"),
 dat = cbind(ipcm$fitted.values,ipcrv)
 dat = na.omit(dat)
 # Plot observed and forecasted volatility for the given time frame
-pdf(file = "IPC1.pdf",width = 8, height = 4)
+# pdf(file = "IPC1.pdf",width = 8, height = 4)
+png(file = "IPC1.png",width = 8, height = 4,units = "in", res = resolution)
   par(mar = c(2,4,1,1))
   cycles.dates = list(c("2000-02-03", "2002-01-03"), 
                       c("2008-09-01", "2010-09-01"), 
@@ -69,13 +75,15 @@ pdf(file = "IPC1.pdf",width = 8, height = 4)
   )
   # function chart.TimeSeries plots last Ticks label wrong
   # problem was fixed by drawing axis with function axis()
+  sub = 1:17 %in% seq(1,17,2)
   axTicks = c(1,which(diff(as.numeric(format(time(dat),"%Y")))!=0),dim(dat)[1])
-  axis(1,axTicks,2000:2016,cex.axis=0.8)
+  axis(1,axTicks,ifelse(sub,2000:2016,""),cex.axis=0.8)
 
 dev.off()
 
 # plot returns
-pdf(file = "IPC2.pdf",width = 8, height = 4)
+# pdf(file = "IPC2.pdf",width = 8, height = 4)
+png(file = "IPC2.png",width = 8, height = 4,units = "in", res = resolution)
   par(mar=c(3,4,3,1))
   cycles.dates = list(c("2000-01-03", "2002-01-03"), 
                       c("2008-09-01", "2010-09-01"), 
@@ -95,8 +103,9 @@ pdf(file = "IPC2.pdf",width = 8, height = 4)
     element.color ="black",
     minor.ticks = FALSE
   )
+  sub = 1:17 %in% seq(1,17,2)
   axTicks = c(1,which(diff(as.numeric(format(time(returns),"%Y")))!=0),length(returns))
-  axis(1,axTicks,2000:2016,cex.axis=0.8)
+  axis(1,axTicks,ifelse(sub,2000:2016,""),cex.axis=0.8)
 
 dev.off()
 
@@ -114,7 +123,8 @@ dat = cbind(ipcrvs8,ipcm8$fitted.values)
 dat = na.omit(dat)
 
 # Plot harModel 2008
-pdf(file = "IPC3.pdf", width = 8, height = 4)
+# pdf(file = "IPC3.pdf", width = 8, height = 4)
+png(file = "IPC3.png",width = 8, height = 4,units = "in", res = resolution)
   par(mar = c(2,4,1,1))
   chart.TimeSeries(
     dat,
@@ -136,7 +146,8 @@ dev.off()
 
 
 # Plot realized variance and a volatility approx.
-pdf(file = "IPC4.pdf", width = 8, height = 4)
+# pdf(file = "IPC4.pdf", width = 8, height = 4)
+png(file = "IPC4.png",width = 8, height = 4,units = "in", res = resolution)
 
   par(mar = c(2,4,1,1))
   

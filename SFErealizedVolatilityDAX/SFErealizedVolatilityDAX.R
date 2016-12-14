@@ -1,6 +1,8 @@
 # Dax realized variance, observed and predicted volatility and price
 # movements
 
+# changing Local coordinates, s.t. abbrev. months are in English
+Sys.setlocale("LC_ALL","English")
 # Clear enviorenment
 graphics.off()
 rm(list = ls())
@@ -47,7 +49,9 @@ daxm = harModel(data = daxrv, periods = c(1, 5, 22), RVest = c("rCov"),
 dat = cbind(daxm$fitted.values,daxrv)
 dat = na.omit(dat)
 # Plot observed and forecasted volatility
-pdf(file = "DAX1.pdf",width = 8, height = 4)
+
+# pdf(file = "DAX1.pdf",width = 8, height = 4)
+png(file = "DAX1.png",width = 8 , height = 4, units = "in", res = 300)
   par(mar = c(2,4,1,1))
   cycles.dates = list(c("2000-02-03", "2002-01-03"), 
                       c("2008-09-01", "2010-09-01"), 
@@ -70,13 +74,15 @@ pdf(file = "DAX1.pdf",width = 8, height = 4)
   )
   # function chart.TimeSeries plots last Ticks label wrong
   # problem was fixed by drawing axis with function axis()
+  sub = 1:17 %in% seq(1,17,2)
   axTicks = c(1,which(diff(as.numeric(format(time(dat),"%Y")))!=0),dim(dat)[1])
-  axis(1,axTicks,2000:2016,cex.axis=0.8)
+  axis(1,axTicks,ifelse(sub,2000:2016,""),cex.axis=0.8)
 
 dev.off()
 
 # plot returns
-pdf(file = "DAX2.pdf",width = 8, height = 4)
+# pdf(file = "DAX2.pdf",width = 8, height = 4)
+png(file = "DAX2.png",width = 8, height = 4, units = "in", res = 300)
   par(mar=c(3,4,3,1))
   cycles.dates = list(c("2000-01-03", "2002-01-03"), 
                       c("2008-09-01", "2010-09-01"), 
@@ -91,13 +97,12 @@ pdf(file = "DAX2.pdf",width = 8, height = 4)
     period.areas = cycles.dates, 
     period.color = " gray", 
     lwd = 1,
-#     date.format = "%Y",
     xaxis = F,
-    element.color ="black",
+    element.color = "black",
     minor.ticks = FALSE
   )
-  axTicks = c(1,which(diff(as.numeric(format(time(returns),"%Y")))!=0),length(returns))
-  axis(1,axTicks,2000:2016,cex.axis=0.8)
+  axTicks = c(1, which(diff(as.numeric(format(time(returns), "%Y"))) != 0), length(returns))
+  axis(1, axTicks, ifelse(sub, 2000:2016, ""), cex.axis = 0.8)
 
 dev.off()
 
@@ -115,7 +120,8 @@ dat = cbind(daxrvs8,daxm8$fitted.values)
 dat = na.omit(dat)
 
 # Plot harModel 2008
-pdf(file = "DAX3.pdf", width = 8, height = 4)
+# pdf(file = "DAX3.pdf", width = 8, height = 4)
+png(file = "DAX3.png", width = 8, height = 4, units = "in", res = 300)
   par(mar = c(2,4,1,1))
   chart.TimeSeries(
     dat,
@@ -131,12 +137,14 @@ pdf(file = "DAX3.pdf", width = 8, height = 4)
     xaxis=F
   )
   axTicks = c(1,which(diff(as.numeric(format(time(dat),"%m")))!=0)+1)
-  axis(1,c(axTicks,dim(dat)[1]),c(format(time(dat)[c(axTicks)],format="%b"),"Jan"),cex.axis=0.8)
+  axis(1, c(axTicks, dim(dat)[1]), 
+       c(format(time(dat)[c(axTicks)], format = "%b"), "Jan"), cex.axis = 0.8)
 
 dev.off()
 
 # Plot realized variance and a volatility approx.
-pdf(file = "DAX4.pdf", width = 8, height = 4)
+# pdf(file = "DAX4.pdf", width = 8, height = 4)
+png(file = "DAX4.png", width = 8, height = 4, units = "in", res = 300)
 
   par(mar = c(2,4,1,1))
   
@@ -153,7 +161,8 @@ pdf(file = "DAX4.pdf", width = 8, height = 4)
     major.ticks=F,
     xaxis=F
   )
-  axTicks = c(1,which(diff(as.numeric(format(time(daxrv8),"%m")))!=0)+1)
-  axis(1,c(axTicks,length(daxrv8)),format(time(daxrv8)[c(axTicks,1)],format="%b"),cex.axis=0.8)
+  axTicks = c(1, which(diff(as.numeric(format(time(daxrv8), "%m"))) != 0) + 1)
+  axis(1, c(axTicks, length(daxrv8)), 
+       format(time(daxrv8)[c(axTicks, 1)], format = "%b"), cex.axis = 0.8)
 
 dev.off()

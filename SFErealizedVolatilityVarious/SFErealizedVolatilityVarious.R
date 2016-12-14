@@ -4,6 +4,10 @@ rm(list = ls())
 
 # Load packages
 library(PerformanceAnalytics)
+library(highfrequency)
+
+# Changing local coordinates, s.t. abbreviations of months are in English
+Sys.setlocale("LC_ALL","English")
 
 # Load data from R enviorenment
 data(realized_library)
@@ -58,7 +62,8 @@ dat = na.omit(dat[format(time(dat),"%B")!="Januar",])
 colnames(dat) = c(nam,paste0(nam,"ts"))
 # PLOTS
 for (i in nam){
-  pdf(file = paste0(i,".pdf"), width = 8, height = 1.5)
+#   pdf(file = paste0(i,".pdf"), width = 8, height = 1.5)
+  png(file = paste0(i,".png"), width = 8, height = 1.5, units = "in", res = 300)
   
     par(mar = c(2,4,1.5,1))
     

@@ -6,6 +6,7 @@ path = "../../Project/project/AlejandroSarmiento&Dimovic/"
 # Load Packages
 library(xts)
 library(highfrequency)
+library(PerformanceAnalytics)
 
 # Download File
 ipc = read.csv(file = "IPC (5 MIN) 26_11-10_12.csv", sep = ",", head = TRUE)
@@ -43,55 +44,69 @@ rv = harModel(pricer, periods = c(1, 1, 1), periodsJ = c(1, 1, 1),
               RVest = c("rCov", "rBPCov"), type = "HARRVCJ", transform = "sqrt")
 
 # Grafical representation of our results
-pdf(file = "IPCA1.pdf")
-
-  par(mfrow = c(2, 1))
-  plot(ts(price), col = "blue", main = "IPC 26/11/2015-10/12/2015")
-  plot(price.ch, main = "Percentage change in stock prices nov 26 to dec 10")
+# pdf(file = "IPCA1.pdf",width = 8, height = 4)
+png(file = "IPCA1.png", width = 8, height = 3, units = "in", res = 300)
+  chart.TimeSeries(
+    price.ch,
+    type = "l", 
+    main = NA, # "Observed and forecasted RV based on HAR Model: HARRV", 
+    ylab = NA, # "Realized Volatility",
+    col = c("blue"), 
+    auto.grid = F,
+    date.format = "%d/%m",
+    lwd = 2,
+    element.color ="black",
+    minor.ticks = FALSE
+  )
 dev.off()
 
 
 # data preparation
-dates = unique(format(time(pricer),"%F"))
+dates = unique(format(time(pricer), "%F"))
 dat = pricer[dates[1]]
 for (i in dates[-1])
-  dat = cbind(dat,as.double(pricer[i]))
+  dat = cbind(dat, as.double(pricer[i]))
 
 # Plot individual daily returns for our 10 days sample
-pdf(file = paste0(path,"IPCA2_2.pdf"),width = 8,height = 5)
-# par(mfrow = c(4, 3))
-# plot(pricer[1:79, 1],    main = "Returns on Nov 26")
-# plot(pricer[80:158, 1],  main = "Returns on Nov 27")
-# plot(pricer[159:237, 1], main = "Returns on Nov 30")
-# plot(pricer[238:316, 1], main = "Returns on Dec 01")
-# plot(pricer[317:395, 1], main = "Returns on Dec 02")
-# plot(pricer[396:474, 1], main = "Returns on Dec 03")
-# plot(pricer[475:553, 1], main = "Returns on Dec 04")
-# plot(pricer[554:632, 1], main = "Returns on Dec 07")
-# plot(pricer[633:711, 1], main = "Returns on Dec 08")
-# plot(pricer[712:790, 1], main = "Returns on Dec 09")
-# plot(pricer[791:869, 1], main = "Returns on Dec 10")
+# pdf(file = "IPCA2.pdf", width = 8, height = 5)
+png(file = "IPCA2.png", width = 8, height = 5, units = "in", res = 300)
+  col <- function(a, b, n){
+    if(is.character(a))
+      a = col2rgb(a)
+    if(is.character(b))
+      b = col2rgb(b)
+    res = t(sapply(0:(n - 1)/(n - 1), function(x)(b - a) * x + a))
+    return(rgb(res, maxColorValue = 255))
+  }
   chart.TimeSeries(
     dat,
     auto.grid = F,
     date.format = "%R",
-    col = rainbow(dim(dat)[2], alpha = 1),
+    col = col("red", "blue", dim(dat)[2]),
     lwd = 1,
     type = "l", 
-    main = NA,#"5 minutes realized volatility",
+    main = NA, # "5 minutes realized volatility",
     element.color = "black",
-    ylab = "Returns",
+    ylab = "%-change in returns",
     major.ticks=F,
-    minor.ticks=F,
-    #   xaxis=F
+    minor.ticks=F
   )
 dev.off()
 
 # Plot the outcome of our harModel
-pdf(file = "IPCA3.pdf")
-  plot(rv)
+# pdf(file = "IPCA3.pdf", width = 8, height = 4)
+png(file = "IPCA3.png", width = 8, height = 4, units = "in", res = 300)
+
+  chart.TimeSeries(
+    cbind(rv$residuals + rv$fitted.values, rv$fitted.values)[-1,],
+    type = "l", 
+    main = NA,
+    ylab = "RV",
+    col = c("blue","red"), 
+    auto.grid = F,
+    date.format = "%d/%m",
+    lwd = 2,
+    element.color ="black",
+    minor.ticks = FALSE
+  )
 dev.off()
-
-
-
-
