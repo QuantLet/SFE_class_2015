@@ -1,6 +1,7 @@
 # Clean up our space
 graphics.off()
 rm(list = ls())
+path = "../../Project/project/AlejandroSarmiento&Dimovic/"
 
 # Load Packages
 library(xts)
@@ -31,47 +32,64 @@ price = xts(price, order.by = time)
 pricer = makeReturns(price)
 
 # Set log returns vector in a data frame format
-price.ch = ts(price)
-price.ch = price.ch/lag(price.ch, -1) - 1
+
+# price.ch = ts(price)
+# price.ch = price.ch/lag(price.ch, -1) - 1
+price.ch = exp(diff(log(price)))-1
 
 # Apply harModel function which returns the estemites of an heterogeneous autoregressive model For realized volatility. 
 # The model is mainly used to forecast next day volatility based on the high frequency returns of the past.
-rv = harModel(pricer, periods = c(1, 1, 1), periodsJ = c(1, 1, 1), RVest = c("rCov", 
-                                                                             "rBPCov"), type = "HARRVCJ", transform = "sqrt")
+rv = harModel(pricer, periods = c(1, 1, 1), periodsJ = c(1, 1, 1), 
+              RVest = c("rCov", "rBPCov"), type = "HARRVCJ", transform = "sqrt")
 
 # Grafical representation of our results
 pdf(file = "IPCA1.pdf")
 
-par(mfrow = c(2, 1))
-
-plot(ts(price), col = "blue", main = "IPC 26/11/2015-10/12/2015")
-plot(price.ch, main = "Percentage change in stock prices nov 26 to dec 10")
-
+  par(mfrow = c(2, 1))
+  plot(ts(price), col = "blue", main = "IPC 26/11/2015-10/12/2015")
+  plot(price.ch, main = "Percentage change in stock prices nov 26 to dec 10")
 dev.off()
 
+
+# data preparation
+dates = unique(format(time(pricer),"%F"))
+dat = pricer[dates[1]]
+for (i in dates[-1])
+  dat = cbind(dat,as.double(pricer[i]))
+
 # Plot individual daily returns for our 10 days sample
-pdf(file = "IPCA2.pdf")
-par(mfrow = c(4, 3))
-
-plot(pricer[1:79, 1],    main = "Returns on Nov 26")
-plot(pricer[80:158, 1],  main = "Returns on Nov 27")
-plot(pricer[159:237, 1], main = "Returns on Nov 30")
-plot(pricer[238:316, 1], main = "Returns on Dec 01")
-plot(pricer[317:395, 1], main = "Returns on Dec 02")
-plot(pricer[396:474, 1], main = "Returns on Dec 03")
-plot(pricer[475:553, 1], main = "Returns on Dec 04")
-plot(pricer[554:632, 1], main = "Returns on Dec 07")
-plot(pricer[633:711, 1], main = "Returns on Dec 08")
-plot(pricer[712:790, 1], main = "Returns on Dec 09")
-plot(pricer[791:869, 1], main = "Returns on Dec 10")
-
+pdf(file = paste0(path,"IPCA2_2.pdf"),width = 8,height = 5)
+# par(mfrow = c(4, 3))
+# plot(pricer[1:79, 1],    main = "Returns on Nov 26")
+# plot(pricer[80:158, 1],  main = "Returns on Nov 27")
+# plot(pricer[159:237, 1], main = "Returns on Nov 30")
+# plot(pricer[238:316, 1], main = "Returns on Dec 01")
+# plot(pricer[317:395, 1], main = "Returns on Dec 02")
+# plot(pricer[396:474, 1], main = "Returns on Dec 03")
+# plot(pricer[475:553, 1], main = "Returns on Dec 04")
+# plot(pricer[554:632, 1], main = "Returns on Dec 07")
+# plot(pricer[633:711, 1], main = "Returns on Dec 08")
+# plot(pricer[712:790, 1], main = "Returns on Dec 09")
+# plot(pricer[791:869, 1], main = "Returns on Dec 10")
+  chart.TimeSeries(
+    dat,
+    auto.grid = F,
+    date.format = "%R",
+    col = rainbow(dim(dat)[2], alpha = 1),
+    lwd = 1,
+    type = "l", 
+    main = NA,#"5 minutes realized volatility",
+    element.color = "black",
+    ylab = "Returns",
+    major.ticks=F,
+    minor.ticks=F,
+    #   xaxis=F
+  )
 dev.off()
 
 # Plot the outcome of our harModel
 pdf(file = "IPCA3.pdf")
-
-plot(rv)
-
+  plot(rv)
 dev.off()
 
 
