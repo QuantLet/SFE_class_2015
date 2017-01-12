@@ -4,6 +4,7 @@ rm(list = ls())
 
 # Load packages
 library(highfrequency)
+library(PerformanceAnalytics)
 
 # Realized variance ( the realized variance converges in probability to
 # the integrated variance ad n goes to infinity)
@@ -40,17 +41,25 @@ pricer = makeReturns(price)
 # heterogeneous autoregressive model For realized volatility.  The
 # model is mainly used to forecast next day volatility based on the
 # high frequency returns of the past (aggregated by one day).
-rv = harModel(pricer, periods = c(1, 1, 1), periodsJ = c(1, 1, 1), RVest = c("rCov", 
-                                                                             "rBPCov"), type = "HARRVCJ", transform = "sqrt")
+rv = harModel(pricer, periods = c(1, 1, 1), periodsJ = c(1, 1, 1), 
+              RVest = c("rCov","rBPCov"), type = "HARRVCJ", transform = "sqrt")
 
 # Plot realized variance VS realized volatility 'rBPCov'), type =
 # 'HARRVCJ', transform = 'sqrt')
-pdf(file = "RV1.pdf")
-par(mfrow = c(2, 1))
-
-plot(v, main = "Realized Variance")
-plot(rv)
-
+# pdf(file = "RV1.pdf", width = 8, height = 4)
+png(file = "RV1.png", width = 8, height = 4, units = "in", res = 300)
+  chart.TimeSeries(
+    cbind(sqrt(v),rv$residuals+rv$fitted.values,rv$fitted.values)[-1,],
+    type = "l", 
+    main = NA, #"Observed and forecasted RV based on HAR Model: HARRV", 
+    ylab = "RV",
+    col = c("black","blue","red"), 
+    auto.grid = F,
+    date.format = "%d/%m",
+    lwd = 2,
+    element.color ="black",
+    minor.ticks = FALSE
+  )
 dev.off()
   
 
