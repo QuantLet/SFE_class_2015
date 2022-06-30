@@ -71,3 +71,5 @@ chart.TimeSeries(
   element.color ="black",
   minor.ticks = F,
 )
+
+dev.off()
