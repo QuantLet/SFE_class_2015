@@ -1,4 +1,4 @@
-# Install highfrequency version 0.2 and PerformanceAnalytics version 1.4.3541
+# Install highfrequency version 0.2 and PerformanceAnnalytics version 1.4.3541
 # Clear environment
 graphics.off()
 rm(list = ls())
@@ -55,9 +55,8 @@ CAC = cbind(CAC$fitted.values,CAC_RV)
 FTSE = cbind(FTSE$fitted.values,FTSE_RV)
 UE = cbind(UE$fitted.values,UE_RV)
 
-# PLOTS
-png(file = "Various1.png")
-par(mfrow = c(2, 1))
+# PLOTS. Insert one of the indices above to plot the HAR graph
+png(file = "DJ.png", width = 12, height = 4, units = "in", res = 300)
 
 chart.TimeSeries(
   DJ,
@@ -72,53 +71,3 @@ chart.TimeSeries(
   element.color ="black",
   minor.ticks = F,
 )
-
-chart.TimeSeries(
-  CAC,
-  type = "l", 
-  main = "CAC",
-  ylab = "Realized Volatility",
-  col = c("red","blue"), 
-  auto.grid = F,
-  lwd = 1.5,
-  date.format = "%b",
-  xaxis = T,
-  element.color ="black",
-  minor.ticks = F,
-)
-
-
-dev.off()
-
-png(file = "Various2.png")
-par(mfrow = c(2, 1))
-
-chart.TimeSeries(
-  FTSE,
-  type = "l", 
-  main = "FTSE", #"Observed and forecasted RV based on HAR Model: HARRV", 
-  ylab = "Realized Volatility",
-  col = c("red","blue"), 
-  auto.grid = F,
-  lwd = 1.5,
-  date.format = "%b",
-  xaxis = T,
-  element.color ="black",
-  minor.ticks = F,
-)
-
-chart.TimeSeries(
-  UE,
-  type = "l", 
-  main = "UE", #"Observed and forecasted RV based on HAR Model: HARRV", 
-  ylab = "Realized Volatility",
-  col = c("red","blue"), 
-  auto.grid = F,
-  lwd = 1.5,
-  date.format = "%b",
-  xaxis = T,
-  element.color ="black",
-  minor.ticks = F,
-)
-
-dev.off()
