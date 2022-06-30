@@ -20,9 +20,9 @@ Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
 
 ```
 
-![Picture1](CAC.png)
+![Picture1](DJ.png)
 
-![Picture2](DJ.png)
+![Picture2](CAC.png)
 
 ![Picture3](FTSE.png)
 
