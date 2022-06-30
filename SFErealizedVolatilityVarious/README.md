@@ -105,4 +105,6 @@ chart.TimeSeries(
   minor.ticks = F,
 )
 
+dev.off()
+
 ```
