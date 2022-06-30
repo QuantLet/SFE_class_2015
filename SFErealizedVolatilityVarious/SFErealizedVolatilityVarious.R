@@ -1,11 +1,11 @@
-#Install old highfrequency version 0.4
-
-# Clear enviorenment
+# Install highfrequency version 0.2 and PerformanceAnnalytics version 1.4.3541
+# Clear environment
 graphics.off()
 rm(list = ls())
 
 # Load packages
 library(highfrequency)
+
 # Load data from R enviorenment
 data(realized_library)
 
@@ -32,16 +32,16 @@ class(DJI_RV)
 # Apply the har Model for observed and forecasted realized variance in
 # a HAR model
 
-DJ   = HARmodel(data = DJI_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-                type = "HAR", h = 1, transform = NULL)
+DJ   = harModel(data = DJI_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
+                type = "HARRV", h = 1, transform = NULL)
 
-CAC  = HARmodel(data = CAC_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-                type = "HAR", h = 1, transform = NULL)
+CAC  = harModel(data = CAC_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
+                type = "HARRV", h = 1, transform = NULL)
 
-FTSE = HARmodel(data = FTSE_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-                type = "HAR", h = 1, transform = NULL)
+FTSE = harModel(data = FTSE_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
+                type = "HARRV", h = 1, transform = NULL)
 
-UE   = HARmodel(data = UE_RV, periods = c(1, 5, 22), RVest = c("rCov"), type = "HAR", 
+UE   = harModel(data = UE_RV, periods = c(1, 5, 22), RVest = c("rCov"), type = "HARRV", 
                 h = 1, transform = NULL)
 
 # results summary
@@ -50,19 +50,75 @@ summary(CAC)
 summary(FTSE)
 summary(UE)
 
+DJ = cbind(DJ$fitted.values,DJI_RV)
+CAC = cbind(CAC$fitted.values,CAC_RV)
+FTSE = cbind(FTSE$fitted.values,FTSE_RV)
+UE = cbind(UE$fitted.values,UE_RV)
+
 # PLOTS
-png(file = "DJ1.png")
+png(file = "Various1.png")
 par(mfrow = c(2, 1))
 
-plot(DJ)
-plot(CAC)
+chart.TimeSeries(
+  DJ,
+  type = "l", 
+  main = "DJ", #"Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "Realized Volatility",
+  col = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
+
+chart.TimeSeries(
+  CAC,
+  type = "l", 
+  main = "CAC",
+  ylab = "Realized Volatility",
+  col = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
+
 
 dev.off()
 
-png(file = "DJ2.png")
+png(file = "Various2.png")
 par(mfrow = c(2, 1))
 
-plot(FTSE)
-plot(UE)
+chart.TimeSeries(
+  FTSE,
+  type = "l", 
+  main = "FTSE", #"Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "Realized Volatility",
+  col = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
+
+chart.TimeSeries(
+  UE,
+  type = "l", 
+  main = "UE", #"Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "Realized Volatility",
+  col = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
 
 dev.off()
