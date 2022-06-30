@@ -20,11 +20,11 @@ Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
 
 ```
 
-![Picture1](DJ1.png)
+[Picture1](DJ1.png)
 
-![Picture2](DJ1A.png)
+[Picture2](DJ1A.png)
 
-![Picture3](DJ2.png)
+[Picture3](DJ2.png)
 
 
 ### R Code:
