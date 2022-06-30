@@ -1,4 +1,4 @@
-# Install highfrequency version 0.2 and PerformanceAnnalytics version 1.4.3541
+# Install highfrequency version 0.2 and PerformanceAnalytics version 1.4.3541
 # Clear environment
 graphics.off()
 rm(list = ls())
