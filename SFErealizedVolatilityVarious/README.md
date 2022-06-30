@@ -20,11 +20,13 @@ Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
 
 ```
 
-[Picture1](DJ1.png)
+![Picture1](CAC.png)
 
-[Picture2](DJ1A.png)
+![Picture2](DJ.png)
 
-[Picture3](DJ2.png)
+![Picture3](FTSE.png)
+
+![Picture3](UE.png)
 
 
 ### R Code:
