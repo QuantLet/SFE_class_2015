@@ -29,13 +29,14 @@ Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
 
 ### R Code:
 ```r
+#Install old highfrequency version 0.4
+
 # Clear enviorenment
 graphics.off()
 rm(list = ls())
 
 # Load packages
 library(highfrequency)
-
 # Load data from R enviorenment
 data(realized_library)
 
@@ -62,17 +63,17 @@ class(DJI_RV)
 # Apply the har Model for observed and forecasted realized variance in
 # a HAR model
 
-DJ   = harModel(data = DJI_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-              type = "HARRV", h = 1, transform = NULL)
+DJ   = HARmodel(data = DJI_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
+                type = "HAR", h = 1, transform = NULL)
 
-CAC  = harModel(data = CAC_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-               type = "HARRV", h = 1, transform = NULL)
+CAC  = HARmodel(data = CAC_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
+                type = "HAR", h = 1, transform = NULL)
 
-FTSE = harModel(data = FTSE_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-                type = "HARRV", h = 1, transform = NULL)
+FTSE = HARmodel(data = FTSE_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
+                type = "HAR", h = 1, transform = NULL)
 
-UE   = harModel(data = UE_RV, periods = c(1, 5, 22), RVest = c("rCov"), type = "HARRV", 
-              h = 1, transform = NULL)
+UE   = HARmodel(data = UE_RV, periods = c(1, 5, 22), RVest = c("rCov"), type = "HAR", 
+                h = 1, transform = NULL)
 
 # results summary
 summary(DJ)
@@ -96,6 +97,7 @@ plot(FTSE)
 plot(UE)
 
 dev.off()
+
 
 
 ```
