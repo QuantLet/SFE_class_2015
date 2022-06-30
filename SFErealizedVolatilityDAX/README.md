@@ -23,9 +23,9 @@ Datafile : Dax Data current.csv
 
 ```
 
-![Picture1](DAX 1_1.png)
+![Picture1](DAX1_1.png)
 
-![Picture1](DAX 1_2.png)
+![Picture1](DAX1_2.png)
 
 ![Picture2](DAX2.png)
 
