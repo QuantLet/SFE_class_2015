@@ -1,5 +1,6 @@
-# Dax realized variance, observed and predicted volatility and price movements
 # Install Performance Analytics package version 1.4.3541 and highfrequency version 0.4
+# Dax realized variance, observed and predicted volatility and price movements
+
 
 # Clear enviorenment
 graphics.off()
@@ -53,7 +54,7 @@ chart.TimeSeries(
   daxm,
   type = "l", 
   main = "Observed and forecasted RV based on HAR Model: HARRV", 
-  ylab = "Realized Volatility",
+  ylab = "",
   colorset = c("red","blue"), 
   auto.grid = F,
   lwd = 1.5,
@@ -135,3 +136,5 @@ chart.TimeSeries(diff, colorset = "purple", type = "h", main = " Difference in l
                  ylab = "RV", xlab = "Time")
 
 dev.off()
+
+
