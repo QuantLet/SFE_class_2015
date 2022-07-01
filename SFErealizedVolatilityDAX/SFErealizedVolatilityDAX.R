@@ -117,7 +117,7 @@ chart.TimeSeries(
 
 dev.off()
 # Plot realized variance and a volatility approx.
-pdf(file = "DAX4.pdf", width = 10, height = 12)
+pdf(file = "IPC4.pdf", width = 10, height = 12)
 
 par(mfrow = c(3, 1))
 
