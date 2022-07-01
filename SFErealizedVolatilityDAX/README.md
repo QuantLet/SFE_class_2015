@@ -39,7 +39,6 @@ Datafile : Dax Data current.csv
 # Install Performance Analytics package version 1.4.3541 and highfrequency version 0.4
 # Dax realized variance, observed and predicted volatility and price movements
 
-
 # Clear enviorenment
 graphics.off()
 rm(list = ls())
