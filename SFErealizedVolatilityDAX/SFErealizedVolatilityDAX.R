@@ -122,19 +122,17 @@ pdf(file = "DAX4.pdf", width = 10, height = 12)
 par(mfrow = c(3, 1))
 
 chart.TimeSeries(daxrv8, colorset = "red", type = "h", main = "5 minutes realized volatility", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # Plot realized volatility with subsampling
 chart.TimeSeries(daxrvs8, colorset = "blue", type = "h", main = " 5 minutes realized volatility with subsampling", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # set difference between volatilities with and wothout subsampling.
 diff = daxrv8 - daxrvs8
 
 # Plot the volatility differences
 chart.TimeSeries(diff, colorset = "purple", type = "h", main = " Difference in lagged and normal volatility", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 dev.off()
-
-
