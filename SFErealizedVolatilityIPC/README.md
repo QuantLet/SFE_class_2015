@@ -115,7 +115,7 @@ chart.TimeSeries(ipcrv, type = "l", main = "IPC volatility", ylab = "",
 dev.off()
 
 # plot returns
-pdf(file = "IPC2.pdf", width = 12, height = 4)
+pdf(file = "IPC2.pdf", width = 12, height = 6)
 
 chart.TimeSeries(returns, type = "l", main = "IPC returns", ylab = "Return", 
                  col = "black", grid.color = "yellow", period.areas = cycles.dates, 
