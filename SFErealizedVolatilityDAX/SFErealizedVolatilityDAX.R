@@ -1,5 +1,5 @@
 # Dax realized variance, observed and predicted volatility and price movements
-# Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4
+# Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4. Zoo and xts package needs to be installed
 
 # Clear enviorenment
 graphics.off()
