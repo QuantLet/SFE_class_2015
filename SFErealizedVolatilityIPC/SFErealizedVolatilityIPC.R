@@ -122,18 +122,17 @@ pdf(file = "IPC4.pdf", width = 10, height = 12)
 par(mfrow = c(3, 1))
 
 chart.TimeSeries(ipcrv8, col = "red", type = "h", main = "5 minutes realized volatility", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # Plot realized volatility with subsampling
 chart.TimeSeries(ipcrvs8, col = "blue", type = "h", main = " 5 minutes realized volatility with subsampling", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # set difference between volatilities with and wothout subsampling.
 diff = ipcrv8 - ipcrvs8
 
 # Plot the volatility differences
 chart.TimeSeries(diff, col = "purple", type = "h", main = " Difference in lagged and normal volatility measures", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 dev.off()
-
