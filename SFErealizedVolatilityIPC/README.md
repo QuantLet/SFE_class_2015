@@ -92,7 +92,7 @@ chart.TimeSeries(
   ipcm,
   type = "l", 
   main = "Observed and forecasted RV based on HAR Model: HARRV", 
-  ylab = "Realized Volatility",
+  ylab = "",
   colorset = c("red","blue"), 
   auto.grid = F,
   lwd = 1.5,
@@ -107,7 +107,7 @@ cycles.dates = list(c("2000-01-03", "2002-01-03"), c("2008-09-01", "2010-09-01")
 risk.dates = c("2000-01-04", "2008-09-01", "2015-06-03")
 risk.labels = c("Dot-com bubble", "Global Crisis", "Commodities volatility")
 
-chart.TimeSeries(ipcrv, type = "l", main = "IPC volatility", ylab = "Return", 
+chart.TimeSeries(ipcrv, type = "l", main = "IPC volatility", ylab = "", 
                  col = "black", grid.color = "yellow", period.areas = cycles.dates, 
                  period.color =  "#0000FF22", event.lines = risk.dates, event.labels = risk.labels, 
                  event.color = "red", lwd = 1)
@@ -174,6 +174,7 @@ chart.TimeSeries(diff, col = "purple", type = "h", main = " Difference in lagged
                  ylab = "RV", xlab = "Time")
 
 dev.off()
+
 
 
 
