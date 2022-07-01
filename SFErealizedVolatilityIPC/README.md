@@ -33,7 +33,6 @@ Datafile : IPC RV Data
 
 ![Picture4](IPC4.png)
 
-
 ### R Code:
 ```r
 # Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4. Zoo and xts package needs to be installed
