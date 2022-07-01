@@ -31,12 +31,14 @@ Datafile : IPC (5 MIN) 26_11-10_12
 
 ### R Code:
 ```r
+# Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4. Zoo and xts package needs to be installed
 # Clean up our space
 graphics.off()
 rm(list = ls())
 
 # Load Packages
 library(xts)
+library(PerformanceAnalytics)
 library(highfrequency)
 
 # Download File
@@ -82,33 +84,49 @@ plot(price.ch, main = "Percentage change in stock prices nov 26 to dec 10")
 
 dev.off()
 
-# Plot individual daily returns for our 10 days sample
-pdf(file = "IPCA2.pdf")
-par(mfrow = c(4, 3))
+# Plot individual daily returns for the days sample
+pdf(file = "IPCA2_5.pdf", width = 12, height = 4)
 
-plot(pricer[1:79, 1],    main = "Returns on Nov 26")
-plot(pricer[80:158, 1],  main = "Returns on Nov 27")
-plot(pricer[159:237, 1], main = "Returns on Nov 30")
-plot(pricer[238:316, 1], main = "Returns on Dec 01")
-plot(pricer[317:395, 1], main = "Returns on Dec 02")
-plot(pricer[396:474, 1], main = "Returns on Dec 03")
-plot(pricer[475:553, 1], main = "Returns on Dec 04")
-plot(pricer[554:632, 1], main = "Returns on Dec 07")
-plot(pricer[633:711, 1], main = "Returns on Dec 08")
-plot(pricer[712:790, 1], main = "Returns on Dec 09")
-plot(pricer[791:869, 1], main = "Returns on Dec 10")
+#Choose one of the days in sample
+#plot(pricer[159:237, 1], main = "Returns on Nov 30")
+#plot(pricer[238:316, 1], main = "Returns on Dec 01")
+#plot(pricer[317:395, 1], main = "Returns on Dec 02")
+#plot(pricer[396:474, 1], main = "Returns on Dec 03")
+#plot(pricer[475:553, 1], main = "Returns on Dec 04")
+
+chart.TimeSeries(
+  pricer[475:553, 1],
+  type = "l", 
+  main = "Returns on Dec 04", 
+  ylab = "",
+  colorset = "blue", 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%H:%M",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
 
 dev.off()
 
 # Plot the outcome of our harModel
 pdf(file = "IPCA3.pdf")
 
-plot(rv)
+chart.TimeSeries(
+  cbind(rv$residuals + rv$fitted.values, rv$fitted.values)[-1,],
+  type = "l", 
+  main = NA,
+  ylab = "RV",
+  col = c("blue","red"), 
+  auto.grid = F,
+  date.format = "%d/%m",
+  lwd = 2,
+  element.color ="black",
+  minor.ticks = FALSE
+)
 
 dev.off()
-
-
-
 
 
 ```
