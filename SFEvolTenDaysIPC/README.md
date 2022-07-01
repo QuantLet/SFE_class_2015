@@ -24,7 +24,7 @@ Datafile : IPC (5 MIN) 26_11-10_12
 
 ![Picture1](IPCA1.png)
 
-![Picture2](IPCA2.png)
+![Picture2](IPCA2_1.png)
 
 ![Picture3](IPCA3.png)
 
