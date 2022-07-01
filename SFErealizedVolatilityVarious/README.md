@@ -31,7 +31,7 @@ Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
 
 ### R Code:
 ```r
-# Install highfrequency version 0.2 and PerformanceAnnalytics version 1.4.3541
+# Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4. Zoo and xts package needs to be installed
 # Clear environment
 graphics.off()
 rm(list = ls())
