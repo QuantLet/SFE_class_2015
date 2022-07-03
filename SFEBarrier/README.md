@@ -39,14 +39,11 @@ Example:
 - 4: 'Up and In Option: [200, 0.05, 0.03, 275, 4]'
 
 ```
+![Down and In](https://user-images.githubusercontent.com/92677707/177051681-5818b2a9-9d89-402a-98ad-9b1e9763acd3.png)
+![Down and Out](https://user-images.githubusercontent.com/92677707/177051691-5778d6df-3c0c-4ccb-9f1d-4645f4db7011.png)
+![Up and In](https://user-images.githubusercontent.com/92677707/177051697-b166a24c-7498-40e2-92a6-ec4f431f2453.png)
+![Up and Out](https://user-images.githubusercontent.com/92677707/177051702-55fa32cc-ec3a-4f1b-b1dc-e064a306345a.png)
 
-![Picture1](Down and In.png)
-
-![Picture2](Down and Out.png)
-
-![Picture3](Up and In.png)
-
-![Picture4](Up and Out.png)
 
 
 ### R Code:
