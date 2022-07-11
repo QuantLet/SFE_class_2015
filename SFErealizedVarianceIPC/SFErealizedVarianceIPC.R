@@ -1,3 +1,4 @@
+# Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4. Zoo and xts package needs to be installed
 # Clear enviorenment
 graphics.off()
 rm(list = ls())
@@ -48,20 +49,16 @@ rv = harModel(pricer, periods = c(1, 1, 1), periodsJ = c(1, 1, 1),
 # 'HARRVCJ', transform = 'sqrt')
 # pdf(file = "RV1.pdf", width = 8, height = 4)
 png(file = "RV1.png", width = 8, height = 4, units = "in", res = 300)
-  chart.TimeSeries(
-    cbind(sqrt(v),rv$residuals+rv$fitted.values,rv$fitted.values)[-1,],
-    type = "l", 
-    main = NA, #"Observed and forecasted RV based on HAR Model: HARRV", 
-    ylab = "RV",
-    col = c("black","blue","red"), 
-    auto.grid = F,
-    date.format = "%d/%m",
-    lwd = 2,
-    element.color ="black",
-    minor.ticks = FALSE
-  )
+chart.TimeSeries(
+  cbind(sqrt(v),rv$residuals+rv$fitted.values,rv$fitted.values)[-1,],
+  type = "l", 
+  main = NA, #"Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "RV",
+  col = c("black","blue","red"), 
+  auto.grid = F,
+  date.format = "%d/%m",
+  lwd = 2,
+  element.color ="black",
+  minor.ticks = FALSE
+)
 dev.off()
-  
-
-
-

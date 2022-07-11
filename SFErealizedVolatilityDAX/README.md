@@ -23,7 +23,9 @@ Datafile : Dax Data current.csv
 
 ```
 
-![Picture1](DAX 1.png)
+![Picture1](DAX1_1.png)
+
+![Picture1](DAX1_2.png)
 
 ![Picture2](DAX2.png)
 
@@ -34,8 +36,8 @@ Datafile : Dax Data current.csv
 
 ### R Code:
 ```r
-# Dax realized variance, observed and predicted volatility and price
-# movements
+# Install Performance Analytics package version 1.4.3541 and highfrequency version 0.4
+# Dax realized variance, observed and predicted volatility and price movements
 
 # Clear enviorenment
 graphics.off()
@@ -80,33 +82,43 @@ daxrvs = daxrvs[complete.cases(daxrvs)]
 daxm = harModel(data = daxrv, periods = c(1, 5, 22), RVest = c("rCov"), 
                 type = "HARRV", h = 1, transform = NULL)
 
+daxm = cbind(daxm$fitted.values,daxrv)
+
 # Plot observed and forecasted volatility
-pdf(file = "DAX1.pdf")
+pdf(file = "DAX1.pdf", width = 12, height = 4)
 
-par(mfrow = c(2, 1))
-
-plot(daxm)
-
+chart.TimeSeries(
+  daxm,
+  type = "l", 
+  main = "Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "",
+  colorset = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
 # Plot realized variance
 cycles.dates = list(c("2000-01-03", "2002-01-03"), c("2008-09-01", "2010-09-01"), 
                     c("2015-06-05", "2015-12-15"))
 risk.dates = c("2000-01-04", "2008-09-01", "2015-06-03")
 risk.labels = c("Dot-com bubble", "Global Crisis", "Commodities volatility")
 
-chart.TimeSeries(daxrv, type = "l", main = "dax volatility", ylab = "Return", 
-                 col = "black", period.areas = cycles.dates, period.color = "lightgoldenrod3", 
+chart.TimeSeries(daxrv, type = "l", main = "Dax Volatility", ylab = "", period.areas = cycles.dates, period.color = "#0000FF22", 
                  event.lines = risk.dates, event.labels = risk.labels, event.color = "red", 
-                 lwd = 1)
+                 lwd = 1, grid.color = NA)
 
 
 dev.off()
 
 # plot returns
-pdf(file = "DAX2.pdf")
+pdf(file = "DAX2.pdf", width = 12, height = 6)
 
 chart.TimeSeries(returns, type = "l", main = "DAX returns", ylab = "Return", 
-                 period.areas = cycles.dates, period.color = " lightcoral", event.lines = risk.dates, 
-                 event.labels = risk.labels, event.color = "blue", lwd = 1)
+                 period.areas = cycles.dates, period.color = "#0000FF22", event.lines = risk.dates, 
+                 event.labels = risk.labels, event.color = "red", lwd = 1)
 
 dev.off()
 
@@ -120,31 +132,45 @@ daxrvs8 = daxrvs["2008"]
 daxm8 = harModel(data = daxrv8, periods = c(1, 5, 22), RVest = c("rCov"), 
                  type = "HARRV", h = 1, transform = NULL)
 
-# Plot harModel 2008
-pdf(file = "DAX3.pdf")
+daxm8 = cbind(daxm8$fitted.values,daxrv8)
 
-plot(daxm8, cwd = 0.5, bg = "pch")
+# Plot harModel 2008
+pdf(file = "DAX3.pdf", width = 12, height = 4)
+
+chart.TimeSeries(
+  daxm8,
+  type = "l", 
+  main = "Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "Realized Volatility",
+  colorset = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
 
 dev.off()
 
 # Plot realized variance and a volatility approx.
-pdf(file = "DAX4.pdf")
+pdf(file = "DAX4.pdf", width = 10, height = 12)
 
 par(mfrow = c(3, 1))
 
-chart.TimeSeries(daxrv8, col = "red", type = "h", main = "5 minutes realized volatility", 
-                 ylab = "RV", xlab = "Time")
+chart.TimeSeries(daxrv8, colorset = "red", type = "h", main = "5 minutes realized volatility", 
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # Plot realized volatility with subsampling
-chart.TimeSeries(daxrvs8, col = "blue", type = "h", main = " 5 minutes realized volatility with subsampling", 
-                 ylab = "RV", xlab = "Time")
+chart.TimeSeries(daxrvs8, colorset = "blue", type = "h", main = " 5 minutes realized volatility with subsampling", 
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # set difference between volatilities with and wothout subsampling.
 diff = daxrv8 - daxrvs8
 
 # Plot the volatility differences
-chart.TimeSeries(diff, col = "purple", type = "h", main = " Difference in lagged and normal volatility", 
-                 ylab = "RV", xlab = "Time")
+chart.TimeSeries(diff, colorset = "purple", type = "h", main = " Difference in lagged and normal volatility", 
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 dev.off()
 

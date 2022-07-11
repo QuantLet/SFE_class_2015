@@ -23,7 +23,9 @@ Datafile : IPC RV Data
 
 ```
 
-![Picture1](IPC1.png)
+![Picture1](IPC1_1.png)
+
+![Picture1](IPC1_2.png)
 
 ![Picture2](IPC2.png)
 
@@ -31,9 +33,9 @@ Datafile : IPC RV Data
 
 ![Picture4](IPC4.png)
 
-
 ### R Code:
 ```r
+# Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4. Zoo and xts package needs to be installed
 # ipc realized variance, observed and predicted volatility and price
 # movements
 
@@ -80,33 +82,44 @@ ipcrvs = ipcrvs[complete.cases(ipcrvs)]
 ipcm = harModel(data = ipcrv, periods = c(1, 5, 22), RVest = c("rCov"), 
                 type = "HARRV", h = 1, transform = NULL)
 
+ipcm = cbind(ipcm$fitted.values,ipcrv)
+
 # Plot observed and forecasted volatility for the given time frame
-png(filename = "IPC1.png")
+pdf(file = "IPC1.pdf", width = 12, height = 4)
 
-par(mfrow = c(2, 1))
-
-plot(ipcm)
-
+chart.TimeSeries(
+  ipcm,
+  type = "l", 
+  main = "Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "",
+  colorset = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
 # Plot realized variance
 cycles.dates = list(c("2000-01-03", "2002-01-03"), c("2008-09-01", "2010-09-01"), 
                     c("2015-06-05", "2015-12-15"))
 risk.dates = c("2000-01-04", "2008-09-01", "2015-06-03")
 risk.labels = c("Dot-com bubble", "Global Crisis", "Commodities volatility")
 
-chart.TimeSeries(ipcrv, type = "l", main = "IPC volatility", ylab = "Return", 
+chart.TimeSeries(ipcrv, type = "l", main = "IPC volatility", ylab = "", 
                  col = "black", grid.color = "yellow", period.areas = cycles.dates, 
-                 period.color = "lightgoldenrod3", event.lines = risk.dates, event.labels = risk.labels, 
+                 period.color =  "#0000FF22", event.lines = risk.dates, event.labels = risk.labels, 
                  event.color = "red", lwd = 1)
 
 dev.off()
 
 # plot returns
-png(filename = "IPC2.png")
+pdf(file = "IPC2.pdf", width = 12, height = 6)
 
 chart.TimeSeries(returns, type = "l", main = "IPC returns", ylab = "Return", 
                  col = "black", grid.color = "yellow", period.areas = cycles.dates, 
-                 period.color = " lightcoral", event.lines = risk.dates, event.labels = risk.labels, 
-                 event.color = "blue", lwd = 1)
+                 period.color = "#0000FF22", event.lines = risk.dates, event.labels = risk.labels, 
+                 event.color = "red", lwd = 1)
 
 dev.off()
 
@@ -120,32 +133,47 @@ ipcrvs8 = ipcrvs["2008"]
 ipcm8 = harModel(data = ipcrv8, periods = c(1, 5, 22), RVest = c("rCov"), 
                  type = "HARRV", h = 1, transform = NULL)
 
-# Plot harModel 2008
-png(filename = "IPC3.png")
+ipcm8 = cbind(ipcm8$fitted.values,ipcrv8)
 
-plot(ipcm8, cwd = 0.5, bg = "pch")
+# Plot harModel 2008
+pdf(file = "IPC3.pdf", width = 12, height = 4)
+
+chart.TimeSeries(
+  ipcm8,
+  type = "l", 
+  main = "Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "Realized Volatility",
+  colorset = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
 
 dev.off()
 # Plot realized variance and a volatility approx.
-png(filename = "IPC4.png")
+pdf(file = "IPC4.pdf", width = 10, height = 12)
 
 par(mfrow = c(3, 1))
 
 chart.TimeSeries(ipcrv8, col = "red", type = "h", main = "5 minutes realized volatility", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # Plot realized volatility with subsampling
 chart.TimeSeries(ipcrvs8, col = "blue", type = "h", main = " 5 minutes realized volatility with subsampling", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 # set difference between volatilities with and wothout subsampling.
 diff = ipcrv8 - ipcrvs8
 
 # Plot the volatility differences
 chart.TimeSeries(diff, col = "purple", type = "h", main = " Difference in lagged and normal volatility measures", 
-                 ylab = "RV", xlab = "Time")
+                 ylab = "RV", xlab = "Time", cex.main = 2)
 
 dev.off()
+
 
 
 

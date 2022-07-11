@@ -20,16 +20,19 @@ Submitted : Tue, December 28 2015 by Luis Alejandro Sarmiento Abogado
 
 ```
 
-![Picture1](DJ1.png)
+![Picture1](DJ.png)
 
-![Picture2](DJ1A.png)
+![Picture2](CAC.png)
 
-![Picture3](DJ2.png)
+![Picture3](FTSE.png)
+
+![Picture3](UE.png)
 
 
 ### R Code:
 ```r
-# Clear enviorenment
+# Install Performance Analytics package version 1.4.3541 and highfrequency package version 0.4. Zoo and xts package needs to be installed
+# Clear environment
 graphics.off()
 rm(list = ls())
 
@@ -63,16 +66,16 @@ class(DJI_RV)
 # a HAR model
 
 DJ   = harModel(data = DJI_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-              type = "HARRV", h = 1, transform = NULL)
+                type = "HARRV", h = 1, transform = NULL)
 
 CAC  = harModel(data = CAC_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
-               type = "HARRV", h = 1, transform = NULL)
+                type = "HARRV", h = 1, transform = NULL)
 
 FTSE = harModel(data = FTSE_RV, periods = c(1, 5, 22), RVest = c("rCov"), 
                 type = "HARRV", h = 1, transform = NULL)
 
 UE   = harModel(data = UE_RV, periods = c(1, 5, 22), RVest = c("rCov"), type = "HARRV", 
-              h = 1, transform = NULL)
+                h = 1, transform = NULL)
 
 # results summary
 summary(DJ)
@@ -80,22 +83,28 @@ summary(CAC)
 summary(FTSE)
 summary(UE)
 
-# PLOTS
-png(file = "DJ1.png")
-par(mfrow = c(2, 1))
+DJ = cbind(DJ$fitted.values,DJI_RV)
+CAC = cbind(CAC$fitted.values,CAC_RV)
+FTSE = cbind(FTSE$fitted.values,FTSE_RV)
+UE = cbind(UE$fitted.values,UE_RV)
 
-plot(DJ)
-plot(CAC)
+# PLOTS. Insert one of the indices above to plot the HAR graph
+png(file = "DJ.png", width = 12, height = 4, units = "in", res = 300)
+
+chart.TimeSeries(
+  DJ,
+  type = "l", 
+  main = "DJ", #"Observed and forecasted RV based on HAR Model: HARRV", 
+  ylab = "Realized Volatility",
+  col = c("red","blue"), 
+  auto.grid = F,
+  lwd = 1.5,
+  date.format = "%b",
+  xaxis = T,
+  element.color ="black",
+  minor.ticks = F,
+)
 
 dev.off()
-
-png(file = "DJ2.png")
-par(mfrow = c(2, 1))
-
-plot(FTSE)
-plot(UE)
-
-dev.off()
-
 
 ```
