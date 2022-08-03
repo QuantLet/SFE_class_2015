@@ -169,7 +169,7 @@ chart.TimeSeries(daxrvs8, colorset = "blue", type = "h", main = " 5 minutes real
 diff = daxrv8 - daxrvs8
 
 # Plot the volatility differences
-chart.TimeSeries(diff, colorset = "purple", type = "h", main = " Difference in lagged and normal volatility", 
+chart.TimeSeries(diff, colorset = "purple", type = "h", main = "Difference in realized volatility with and without subsampling", 
                  ylab = "RV", xlab = "Time", cex.main = 2)
 
 dev.off()
