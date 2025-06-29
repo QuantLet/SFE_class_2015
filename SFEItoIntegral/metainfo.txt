@@ -11,6 +11,8 @@ See also: SFEWienerProcess, SFEItoProcess
 
 Author: Michael Lebacher, Johannes Stoiber
 
+Author(Python): Rahul Tak
+
 Submitted:  2015/12/03
 
 Input:
