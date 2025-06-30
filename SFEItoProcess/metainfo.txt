@@ -9,7 +9,7 @@ Keywords: Black Scholes, Ito process, Wiener process, Cox-Ingersoll-Ross process
 
 See also: SFEWienerProcess, SFEItoIntegral
 
-Author: Michael Lebacher, Johannes Stoiber, Ștefan Găman
+Author: Michael Lebacher, Johannes Stoiber, Ștefan Găman, Andrei-Theodor Ginavar
 
 Submitted:  2015/12/03
 
