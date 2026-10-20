@@ -9,7 +9,7 @@ Name of QuantLet: SFErealizedVolatilityDAX
 
 Published in: Statistics of Financial Markets I
 
-Description: Realized variance analysis and graphical representation of 5 seconds intraday highfrequency realized variance
+Description: Realized variance analysis and graphical representation of 5 seconds intraday highfrequency realized variance from the German stock market DAX and comparison with it''s lagged subsample
 
 Keywords: Volatility, graphical representation, time-series, log returns, variance
 
