@@ -9,7 +9,7 @@ Name of QuantLet: SFErealizedVarianceIPC
 
 Published in: Statistics of Financial Markets I
 
-Description: Realized variance analysis and graphical representation of 10 days high frequency data
+Description: Realized variance analysis and graphical representation of 10 days high frequency data from the Mexican stock market IPC and comparison with the foretold index harModel results
 
 Keywords: Volatility, graphical representation, time-series, log returns, variance
 
