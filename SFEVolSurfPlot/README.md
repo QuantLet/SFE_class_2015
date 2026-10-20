@@ -9,7 +9,7 @@ Name of QuantLet: SFEVolSurfPlot
 
 Published in: Statistics of Financial Markets I
 
-Description: Produces a graphic visualisation of the
+Description: Produces a graphic visualisation of the implied volatility surface. The implied volatility smiles are shown as blue scatter plot.
 
 Keywords: Black Scholes, implied volatility, volatility
 
@@ -19,9 +19,11 @@ Author: Maria Grith
 
 Author[Update]: Sabine Bertram, Steffen Thesdorf
 
-Datafile: surf_1412.csv
+Author[Python]: Andrei-Theodor Ginavar
 
-Input: Price of the option, skrike price, risk-free interest rate,
+Datafile: surf_1412.csv, DAX_Data.xlsx
+
+Input: Price of the option, skrike price, risk-free interest rate, time to maturity, price of the underlying and Put-Call-flag
 
 Output: Plot of implied volatility surface
 
