@@ -17,12 +17,14 @@ See also: SFEWienerProcess, SFEItoProcess
 
 Author: Michael Lebacher, Johannes Stoiber
 
-Submitted: 2015/12/03
+Author(Python): Rahul Tak
+
+Submitted: 2015/12/03, 2025/06/30
 
 Input: 
 - dt : delta t (dt= 0.0001 by default)
 - c : constant (c=1 by default)
-- set.seed : 'logical parameter (set.seed=TRUE by default, if
+- set.seed : 'logical parameter (set.seed=TRUE by default, if set.seed=FALSE the random numbers do change with repeated execution of the function)'
 
 Output: A plot of the simulated process and a plot of the corresponding Ito Integral
 
