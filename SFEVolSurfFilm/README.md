@@ -9,7 +9,7 @@ Name of QuantLet: SFEVolSurfFilm
 
 Published in: Statistics of Financial Markets I
 
-Description: Produces a graphic visualisation of the
+Description: Produces a graphic visualisation of the implied volatility surface. It saves the images as figures and produces a film out of them. The implied volatility smiles are shown as blue scatter plot.
 
 Keywords: Black Scholes, implied volatility, volatility
 
@@ -19,7 +19,7 @@ Author: Sabine Bertram, Steffen Thesdorf
 
 Datafile: surf_2010-2014.csv
 
-Input: Price of the option, strike price, risk-free interest rate,
+Input: Price of the option, strike price, risk-free interest rate, time to maturity, price of the underlying, Put-Call-flag and index for different trading dates
 
 Output: Film of implied volatility surface
 
