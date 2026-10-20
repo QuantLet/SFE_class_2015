@@ -9,7 +9,7 @@ Name of Quantlet: SFEBarrier
 
 Published in: Statistics of Financial Markets I
 
-Description: Compare and plots two possible paths of the asset price. Once the asset price hits the
+Description: Compare and plots two possible paths of the asset price. Once the asset price hits the barrier, the option expires worthless or becomes activated (depending upon the type of barrier option), regardless of future stock price.
 
 Keywords: exotic-option, asset, stochastic-process, time-series, plot
 
@@ -24,16 +24,16 @@ Input:
 - r : Interest Rate per year
 - vol : Volatility per year
 - b : Barrier
-- c : 'Type of Barrier Option (1: Down and Out, 2: Up and Out, 3: Down and In, 4: Up and In)
-- 'User inputs the SFEBarrier parameters [Stock''s Initial Price, Interest Rate, Volatility,
+- c : 'Type of Barrier Option (1: Down and Out, 2: Up and Out, 3: Down and In, 4: Up and In)'
+- User inputs the SFEBarrier parameters [Stock''s Initial Price, Interest Rate, Volatility, Barrier, Type of Barrier option] like [200, 0.05, 0.03, 100, 1]
 
 Output: Plot of a Barrier Option, depending on the type chosen
 
 Example: 
-- 1: 'Down and Out Option: [200, 0.05, 0.03, 100, 1]
-- 2: 'Up and Out Option:   [200, 0.05, 0.03, 300, 2]
-- 3: 'Down and In Option:  [200, 0.05, 0.03, 125, 3]
-- 4: 'Up and In Option:    [200, 0.05, 0.03, 275, 4]
+- 1: 'Down and Out Option: [200, 0.05, 0.03, 100, 1]'
+- 2: 'Up and Out Option:   [200, 0.05, 0.03, 300, 2]'
+- 3: 'Down and In Option:  [200, 0.05, 0.03, 125, 3]'
+- 4: 'Up and In Option:    [200, 0.05, 0.03, 275, 4]'
 
 ```
 <div align="center">
