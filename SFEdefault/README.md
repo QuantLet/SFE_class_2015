@@ -9,11 +9,11 @@ Name of Quantlet: SFEdefault
 
 Published in: Statistics of Financial Markets I
 
-Description: Calculates the historical mean and volatility of default rate
+Description: Calculates the historical mean and volatility of default rate bonds belong to different ratings and also the corresponding regression by exponential function fitting. Estimates the asset correlation using one-factor model.
 
 Keywords: default rate, regression, volatility, asset correlation
 
-See also: BaseCorrGaussModelCDO, CompCorrGaussModelCDO, ETL, SFEETLGaussTr1,
+See also: BaseCorrGaussModelCDO, CompCorrGaussModelCDO, ETL, SFEETLGaussTr1, SFEbaseCorr, SFEcompCorr, SFEcompCorr, SFEdefaproba, SFEmyfun, lowerTrLossGauss
 
 Author: Ya Qian
 
@@ -21,7 +21,7 @@ Submitted: 2015/12/30
 
 Datafile: SFEMoodydefault.csv
 
-Output: Historical mean of default rate, default rate volatility, the corresponding
+Output: Historical mean of default rate, default rate volatility, the corresponding regression by exponential function fitting and the estimated one-factor model asset correlation.
 
 ```
 <div align="center">
