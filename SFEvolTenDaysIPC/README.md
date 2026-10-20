@@ -9,7 +9,7 @@ Name of QuantLet: SFEvolTenDaysIPC
 
 Published in: Statistics of Financial Markets I
 
-Description: Realized volatility analysis of mexican stock market IPC using harModel
+Description: Realized volatility analysis of mexican stock market IPC using harModel predective function and som time series analysis
 
 Keywords: Volatility, graphical representation, time-series, log returns, variance
 
